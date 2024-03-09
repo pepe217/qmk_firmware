@@ -1,0 +1,1 @@
+cp ~/qmk_firmware/.build/kinesis_kintpico_pepe217.uf2 /Volumes/RPI-RP2/kinesis_kintpico_pepe217.uf2
