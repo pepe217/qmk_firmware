@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [ENGRAM] = LAYOUT(
     KC_ESC,       KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,         KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_PSCR,  KC_SCRL,  KC_PAUS,  KC_NO,    QK_BOOT,
     KC_GRV,       KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                                                                      KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     OSM(MOD_RSFT),
-    KC_TAB,       KC_B,     KC_Y,     KC_O,     KC_U,     KC_QUOT,                                                                   KC_COLN,  KC_L,     KC_D,     KC_W,     KC_V,     KC_Z,
+    KC_TAB,       MT(MOD_LGUI, KC_B),     MT(MOD_LALT, KC_Y),     MT(MOD_LCTL, KC_O),     MT(MOD_LSFT, KC_U),     KC_QUOT, KC_COLN,  MT(MOD_LSFT, KC_L),     MT(MOD_LCTL, KC_D),     MT(MOD_LALT, KC_W),     MT(MOD_LGUI, KC_V),     KC_Z,
     CW_TOGG,      KC_C,     KC_I,     KC_E,     KC_A,     KC_COMM,                                                                   KC_DOT,   KC_H,     KC_T,     KC_S,     KC_N,     KC_Q,
     OSM(MOD_LSFT),KC_G,     KC_X,     KC_J,     KC_V,     KC_UNDS,                                                                   KC_SLSH,  KC_R,     KC_M,     KC_F,     KC_P,     OSM(MOD_LCTL),
                   KC_BSLS,  KC_LBRC,  KC_LPRN,  KC_ESC,                                                                                        KC_EQL,   KC_RPRN,  KC_RBRC,  KC_SCLN,  
