@@ -112,17 +112,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             KC_NO,  KC_NO,   KC_NO,                                                KC_NO,  KC_NO, KC_NO
   ),
 
-  // [CURSOR] = LAYOUT(
-  //   KC_NO,   KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,         KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    QK_NO,
-  //   KC_ESC,   KC_ENTER,    KC_SPC, KC_TAB, KC_DEL, KC_INS,                                         KC_INS,   KC_DEL,    KC_TAB,  KC_SPC,  KC_ENTER,    KC_ESC,
-  //   KC_NO,   OSM(MOD_LSFT),    RCS(KC_Z),    KC_RCTL(KC_Z),     KC_BSPC,    KC_RCTL(KC_X),                                                                   KC_RCTL(KC_X),   KC_BSPC,    KC_RCTL(KC_Z),  RCS(KC_Z),  OSM(MOD_LSFT),    KC_NO,
-  //   CW_TOGG,  KC_RGUI,  KC_RALT,  KC_RCTL,  KC_RSFT,    KC_RCTL(KC_C),                                                                   KC_RCTL(KC_C),   KC_LEFT,  KC_UP,  KC_DOWN,  KC_RIGHT,    KC_RCTL(KC_L),
-  //   KC_RCTL(KC_J),   KC_RCTL(KC_A),    KC_NO,    KC_NO,     KC_RCTL(KC_F),    KC_RCTL(KC_V),                                                                   KC_RCTL(KC_V),   KC_HOME,    KC_PGUP, KC_PGDN,  KC_END,    KC_RCTL(KC_J),
-  //            KC_NO,    KC_NO,    KC_NO,     KC_NO,                                                                                      KC_NO,    KC_NO,  KC_NO,  KC_NO,
-  //                                                     KC_RALT(KC_TAB),  KC_RGUI(KC_TAB),                                               KC_NO,  KC_NO,
-  //                                                             KC_NO,                                               KC_NO,
-  //                                            KC_NO,  KC_NO,   KC_NO,                                               KC_NO,  KC_NO, KC_NO
-  // ),
+  [CURSOR] = LAYOUT(
+    KC_NO,   KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,         KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
+    KC_ESC,   KC_ENTER,    KC_SPC, KC_TAB, KC_DEL, KC_INS,                                         KC_INS,   KC_DEL,    KC_TAB,  KC_SPC,  KC_ENTER,    KC_ESC,
+    KC_NO,   OSM(MOD_LSFT),    RCS(KC_Z),    RCTL(KC_Z),     KC_BSPC,    RCTL(KC_X),                                                                   RCTL(KC_X),   KC_BSPC,    RCTL(KC_Z),  RCS(KC_Z),  OSM(MOD_LSFT),    KC_NO,
+    CW_TOGG,  KC_RGUI,  KC_RALT,  KC_RCTL,  KC_RSFT,    RCTL(KC_C),                                                                   RCTL(KC_C),   KC_LEFT,  KC_UP,  KC_DOWN,  KC_RIGHT,    RCTL(KC_L),
+    RCTL(KC_J),   RCTL(KC_A),    KC_NO,    KC_NO,     RCTL(KC_F),    RCTL(KC_V),                                                                   RCTL(KC_V),   KC_HOME,    KC_PGUP, KC_PGDN,  KC_END,    RCTL(KC_J),
+             KC_NO,    KC_NO,    KC_NO,     KC_NO,                                                                                      KC_NO,    KC_NO,  KC_NO,  KC_NO,
+                                                      RALT(KC_TAB),  RGUI(KC_TAB),                                               KC_NO,  KC_NO,
+                                                              KC_NO,                                               KC_NO,
+                                             KC_NO,  KC_NO,   KC_NO,                                               KC_NO,  KC_NO, KC_NO
+  ),
 
   // [FUNCTION] = LAYOUT(
     // KC_NO,   KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,         KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    QK_NO,
