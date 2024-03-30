@@ -30,5 +30,16 @@
     },
     "clangd.arguments": [
         "--header-insertion=never"
-    ]
+    ],
+    "python.languageServer": "Pylance",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingModuleSource": "none",
+        "reportShadowedImports": "none"
+    },
+    "python.analysis.extraPaths": [
+        "",
+        "/Users/michael/.vscode/extensions/joedevivo.vscode-circuitpython-0.2.0-darwin-arm64/stubs",
+        "/Users/michael/Library/Application Support/Code/User/globalStorage/joedevivo.vscode-circuitpython/bundle/20240322/adafruit-circuitpython-bundle-py-20240322/lib"
+    ],
+    "circuitpython.board.version": null
 }

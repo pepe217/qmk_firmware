@@ -3,11 +3,12 @@
  
 #include QMK_KEYBOARD_H
 
-#define QWERTY 1 // qwerty   
-#define ENGRAM 0 // engrammer layout
-#define SYMBOL 2 // symbols
-#define NUMPAD 3 // numpad
-#define FUNCTION 4 // function
+#define QWERTY 1
+#define ENGRAM 0
+#define SYMBOL 2
+#define NUMPAD 3
+#define FUNCTION 4
+#define CURSOR 5 
 
 // shift key overrides
 const key_override_t comma_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_LPRN);
@@ -19,7 +20,7 @@ const key_override_t rparen_override = ko_make_basic(MOD_MASK_SHIFT, KC_RPRN, KC
 
 
 const key_override_t **key_overrides = (const key_override_t *[]){
-    &comma_override, &dot_override, &colon_override, &underscore_override, 
+    &comma_override, &dot_override, &colon_override, &underscore_override, &lparen_override, &rparen_override,
     NULL // Null terminate the array of overrides!
 };
 
@@ -67,12 +68,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,       KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,         KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_PSCR,  KC_SCRL,  KC_PAUS,  KC_NO,    QK_BOOT,
     KC_GRV,       KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                                                                      KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     RGUI(KC_3),
     KC_TAB,       KC_B,     KC_Y,     KC_O,     KC_U,     KC_QUOT,                                                                   KC_COLN,  KC_L,     KC_D,     KC_W,     KC_V,     KC_Z,
-    CW_TOGG,      MT(MOD_RGUI, KC_C),     MT(MOD_RALT, KC_I),     MT(MOD_RCTL, KC_E),     MT(MOD_RSFT, KC_A),     KC_COMM,          KC_DOT,   MT(MOD_LSFT, KC_H),     MT(MOD_RCTL, KC_T),     MT(MOD_RALT, KC_S),     MT(MOD_RGUI, KC_N),     KC_Q,
+    CW_TOGG,      MT(MOD_RGUI, KC_C),     MT(MOD_RALT, KC_I),     MT(MOD_RCTL, KC_E),     MT(MOD_LSFT, KC_A),     KC_COMM,          KC_DOT,   MT(MOD_LSFT, KC_H),     MT(MOD_RCTL, KC_T),     MT(MOD_RALT, KC_S),     MT(MOD_RGUI, KC_N),     KC_Q,
     RALT(KC_TAB), KC_G,     KC_X,     KC_J,     KC_V,     KC_UNDS,                                                                   KC_SLSH,  KC_R,     KC_M,     KC_F,     KC_P,     RGUI(KC_2),
                   KC_BSLS,  KC_LBRC,  KC_LPRN,  KC_ESC,                                                                                        KC_EQL,   KC_RPRN,  KC_RBRC,  KC_SCLN,  
-                                                      LT(FUNCTION, KC_RGUI),  LT(NUMPAD, KC_RALT),                     KC_RGUI,  LT(SYMBOL, KC_RCTL),
+                                                      LT(FUNCTION, KC_RGUI),  KC_RALT,                     KC_RGUI,  LT(SYMBOL, KC_RCTL),
                                                                 KC_HOME,                                               KC_PGUP,
-                                            KC_BSPC,  KC_DEL,   KC_END,                                                KC_PGDN,  KC_ENTER, KC_SPC
+                                            LT(CURSOR, KC_BSPC),  LT(NUMPAD, KC_DEL),   KC_END,                                                KC_PGDN,  KC_ENTER, KC_SPC
   ),
 
   [SYMBOL] = LAYOUT(
@@ -100,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [FUNCTION] = LAYOUT(
-    KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,         KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_NO,  KC_NO,  KC_NO,    QK_NO,
+    KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,         KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_NO,  KC_NO,  KC_NO,    KC_NO,
     KC_NO,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                                                      KC_NO,     KC_F7,     KC_F8,     KC_F9,     KC_F10,     KC_F13,
     KC_NO,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                                                      KC_NO,     KC_F4,     KC_F5,     KC_F6,     KC_F11,     KC_F14,
     CW_TOGG,  KC_RGUI,  KC_RALT,  KC_RCTL,  KC_RSFT,     KC_NO,                                                                      KC_NO,     KC_F1,     KC_F2,     KC_F3,     KC_F12,  KC_F15,
@@ -111,16 +112,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             KC_NO,  KC_NO,   KC_NO,                                                KC_NO,  KC_NO, KC_NO
   ),
 
+  // [CURSOR] = LAYOUT(
+  //   KC_NO,   KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,         KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    QK_NO,
+  //   KC_ESC,   KC_ENTER,    KC_SPC, KC_TAB, KC_DEL, KC_INS,                                         KC_INS,   KC_DEL,    KC_TAB,  KC_SPC,  KC_ENTER,    KC_ESC,
+  //   KC_NO,   OSM(MOD_LSFT),    RCS(KC_Z),    KC_RCTL(KC_Z),     KC_BSPC,    KC_RCTL(KC_X),                                                                   KC_RCTL(KC_X),   KC_BSPC,    KC_RCTL(KC_Z),  RCS(KC_Z),  OSM(MOD_LSFT),    KC_NO,
+  //   CW_TOGG,  KC_RGUI,  KC_RALT,  KC_RCTL,  KC_RSFT,    KC_RCTL(KC_C),                                                                   KC_RCTL(KC_C),   KC_LEFT,  KC_UP,  KC_DOWN,  KC_RIGHT,    KC_RCTL(KC_L),
+  //   KC_RCTL(KC_J),   KC_RCTL(KC_A),    KC_NO,    KC_NO,     KC_RCTL(KC_F),    KC_RCTL(KC_V),                                                                   KC_RCTL(KC_V),   KC_HOME,    KC_PGUP, KC_PGDN,  KC_END,    KC_RCTL(KC_J),
+  //            KC_NO,    KC_NO,    KC_NO,     KC_NO,                                                                                      KC_NO,    KC_NO,  KC_NO,  KC_NO,
+  //                                                     KC_RALT(KC_TAB),  KC_RGUI(KC_TAB),                                               KC_NO,  KC_NO,
+  //                                                             KC_NO,                                               KC_NO,
+  //                                            KC_NO,  KC_NO,   KC_NO,                                               KC_NO,  KC_NO, KC_NO
+  // ),
 
   // [FUNCTION] = LAYOUT(
-  //   KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,         KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_NO,  KC_NO,  KC_NO,    QK_NO,
-  //   KC_NO,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                                                      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
-  //   KC_NO,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                                                      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
-  //   KC_NO,  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                                                      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,  KC_NO,
-  //   KC_NO,  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                                                      KC_NO,     KC_NO,     KC_NO,  KC_NO,   KC_NO,  KC_NO,
-  //             KC_NO,   KC_NO,   KC_NO,  KC_NO,                                                                                       KC_NO,    KC_NO,  KC_NO,  KC_NO,
-  //                                                     KC_NO,  KC_NO,                                               KC_NO,  KC_NO,
-  //                                                               KC_NO,                                               KC_NO,
-  //                                           KC_NO,  KC_NO,   KC_NO,                                                KC_NO,  KC_NO, KC_NO
+    // KC_NO,   KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,         KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    QK_NO,
+    // KC_NO,   KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
+    // KC_NO,   KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
+    // KC_NO,   KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
+    // KC_NO,   KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
+    //          KC_NO,    KC_NO,    KC_NO,     KC_NO,                                                                                      KC_NO,    KC_NO,  KC_NO,  KC_NO,
+    //                                                   KC_NO,  KC_NO,                                               KC_NO,  KC_NO,
+    //                                                           KC_NO,                                               KC_NO,
+    //                                          KC_NO,  KC_NO,   KC_NO,                                               KC_NO,  KC_NO, KC_NO
   // ),
 };
