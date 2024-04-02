@@ -9,6 +9,7 @@
 #define NUMPAD 3
 #define FUNCTION 4
 #define CURSOR 5 
+#define MISC 6
 
 // shift key overrides
 const key_override_t comma_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_LPRN);
@@ -64,14 +65,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [ENGRAM] = LAYOUT(
     CW_TOGG,       KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,         KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_PSCR,  KC_SCRL,  KC_PAUS,  KC_NO,    QK_BOOT,
-    KC_EQL,       KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                                                                      KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     RGUI(KC_3),
+    KC_EQL,       KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                                                                      KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     CW_TOGG,
     KC_GRV,       KC_B,     KC_Y,     KC_O,     KC_U,     KC_QUOT,                                                                   KC_SCLN,  KC_L,     KC_D,     KC_W,     KC_V,     KC_Z,
     KC_ESC,      MT(MOD_LGUI, KC_C),     MT(MOD_LALT, KC_I),     MT(MOD_LCTL, KC_E),     MT(MOD_LSFT, KC_A),     KC_COMM,          KC_DOT,   MT(MOD_LSFT, KC_H),     MT(MOD_RCTL, KC_T),     MT(MOD_RALT, KC_S),     MT(MOD_RGUI, KC_N),     KC_Q,
-    RALT(KC_TAB), KC_G,     KC_X,     KC_J,     KC_V,     KC_UNDS,                                                                   KC_SLSH,  KC_R,     KC_M,     KC_F,     KC_P,     RGUI(KC_2),
-                  KC_BSLS,  KC_LBRC,  KC_LPRN,  KC_TAB,                                                                                        KC_UP,   KC_DOWN,  KC_LBRC,  KC_RBRC,  
-                                                      LT(FUNCTION, KC_RGUI),  KC_RALT,                     KC_RGUI,  LT(SYMBOL, KC_RCTL),
+    KC_COLN,    KC_G,     KC_X,     KC_J,     KC_K,     KC_UNDS,                                                                   KC_SLSH,  KC_R,     KC_M,     KC_F,     KC_P,     KC_MINS,
+                  KC_BSLS,  KC_LBRC,  KC_LPRN,  KC_DEL,                                                                                        KC_UP,   KC_DOWN,  KC_LBRC,  KC_RBRC,  
+                                                      LT(FUNCTION, LALT(KC_TAB)),  LGUI(KC_TAB),                                             KC_LEFT,  KC_RIGHT,
                                                                 LT(CURSOR, KC_HOME),                                               KC_PGUP,
-                                             KC_BSPC,  KC_DEL,   LT(NUMPAD, KC_END),                                                KC_PGDN,  KC_ENTER, KC_SPC
+                                             KC_BSPC,  LT(NUMPAD, KC_TAB),   KC_END,                                               KC_PGDN,  LT(SYMBOL, KC_ENTER), KC_SPC
   ),
 
   [SYMBOL] = LAYOUT(
@@ -122,6 +123,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                              KC_NO,  KC_NO,   KC_NO,                                               KC_NO,  KC_NO, KC_NO
   ),
 
+  [MISC] = LAYOUT(
+    KC_NO,   KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,         KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
+    KC_NO,   KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
+    KC_NO,   KC_F1,    KC_F2,    KC_F3,     KC_F4,    KC_F5,                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
+    KC_NO,   KC_1,    KC_2,    KC_3,     KC_4,    KC_5,                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
+    KC_NO,   LGUI(KC_1),    LGUI(KC_2),    LGUI(KC_3),     LGUI(KC_4),    LGUI(KC_5),                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
+             KC_NO,    KC_NO,    KC_NO,     KC_NO,                                                                                      KC_NO,    KC_NO,  KC_NO,  KC_NO,
+                                                      KC_NO,  KC_NO,                                               KC_NO,  KC_NO,
+                                                              KC_NO,                                               KC_NO,
+                                             KC_NO,  KC_NO,   KC_NO,                                               KC_NO,  KC_NO, KC_NO
+  ),
   // [FUNCTION] = LAYOUT(
     // KC_NO,   KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,         KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    QK_NO,
     // KC_NO,   KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
