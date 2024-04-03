@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                   KC_BSLS,  KC_LBRC,  KC_LPRN,  KC_DEL,                                                                                        KC_UP,   KC_DOWN,  KC_LBRC,  KC_RBRC,  
                                                       LT(FUNCTION, LALT(KC_TAB)),  LGUI(KC_TAB),                                             KC_LEFT,  KC_RIGHT,
                                                                 LT(CURSOR, KC_HOME),                                               KC_PGUP,
-                                             KC_BSPC,  LT(NUMPAD, KC_TAB),   KC_END,                                               KC_PGDN,  LT(SYMBOL, KC_ENTER), KC_SPC
+                                             KC_BSPC,  LT(NUMPAD, KC_TAB),   KC_END,                                               KC_PGDN,  LT(MISC, KC_ENTER), LT(SYMBOL, KC_SPC)
   ),
 
   [SYMBOL] = LAYOUT(
