@@ -69,10 +69,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GRV,       KC_B,     KC_Y,     KC_O,     KC_U,     KC_QUOT,                                                                   KC_SCLN,  KC_L,     KC_D,     KC_W,     KC_V,     KC_Z,
     KC_ESC,      MT(MOD_LGUI, KC_C),     MT(MOD_LALT, KC_I),     MT(MOD_LCTL, KC_E),     MT(MOD_LSFT, KC_A),     KC_COMM,          KC_DOT,   MT(MOD_LSFT, KC_H),     MT(MOD_RCTL, KC_T),     MT(MOD_RALT, KC_S),     MT(MOD_RGUI, KC_N),     KC_Q,
     KC_COLN,    KC_G,     KC_X,     KC_J,     KC_K,     KC_UNDS,                                                                   KC_SLSH,  KC_R,     KC_M,     KC_F,     KC_P,     KC_MINS,
-                  KC_BSLS,  KC_LBRC,  KC_LPRN,  KC_DEL,                                                                                        KC_UP,   KC_DOWN,  KC_LBRC,  KC_RBRC,  
-                                                      LT(FUNCTION, LALT(KC_TAB)),  LGUI(KC_TAB),                                             KC_LEFT,  KC_RIGHT,
+                  OSM(MOD_LSFT),  KC_BSLS,  KC_LEFT,  KC_RIGHT,                                                                                        KC_UP,   KC_DOWN,  KC_LBRC,  KC_RBRC,  
+                                                      LT(FUNCTION, LALT(KC_TAB)),  LGUI(KC_TAB),                                             KC_RGUI,  KC_RCTL,
                                                                 LT(CURSOR, KC_HOME),                                               KC_PGUP,
-                                             KC_BSPC,  LT(NUMPAD, KC_TAB),   KC_END,                                               KC_PGDN,  LT(MISC, KC_ENTER), LT(SYMBOL, KC_SPC)
+                                             KC_BSPC,  LT(NUMPAD, KC_DEL),   KC_END,                                               KC_PGDN,  LT(MISC, KC_ENTER), LT(SYMBOL, KC_SPC)
   ),
 
   [SYMBOL] = LAYOUT(
