@@ -105,8 +105,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_SCLN,    KC_G,     KC_X,     KC_J,     KC_K,     KC_UNDS,                                                                   KC_ESC,  KC_R,     KC_M,     KC_F,     KC_P,     KC_MINS,
                   KC_DEL,  KC_BSLS,  KC_LEFT,  KC_RIGHT,                                                                                        KC_UP,   KC_DOWN,  KC_LBRC,  KC_RBRC,  
                                                       LALT(KC_TAB),  TG(NUMPAD),                                             OSL(MISC),  OSL(SYMBOL),
-                                                                KC_HOME,                                               KC_PGUP,
-                                             KC_BSPC,  LT(FUNCTION, KC_TAB),   LT(CURSOR, KC_END),                                               KC_PGDN,  LT(MISC, KC_ENTER), LT(SYMBOL, KC_SPC)
+                                                                OSL(CURSOR),                                               KC_PGUP,
+                                             KC_BSPC,  KC_TAB,   OSL(FUNCTION),                                               KC_PGDN,  LT(MISC, KC_ENTER), LT(SYMBOL, KC_SPC)
   ),
 
   [SYMBOL] = LAYOUT(
@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_AMPR,   KC_LBRC,   KC_RBRC,  KC_PLUS,                                                                                       KC_UP,    KC_DOWN,  KC_LBRC,  KC_RBRC,
                                                       KC_ASTR,  KC_PERC,                                               KC_RGUI,  KC_RCTL,
                                                                 KC_SCLN,                                               KC_PGUP,
-                                            KC_BSLS,  KC_DOT,   KC_COLN,                                                KC_PGDN,  KC_ENTER, KC_SPC
+                                            KC_BSLS,  KC_DOT,   TG(SYMBOL),                                                KC_PGDN,  KC_ENTER, KC_SPC
   ),
 
   [NUMPAD] = LAYOUT(
@@ -136,13 +136,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [FUNCTION] = LAYOUT(
     KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,         KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_NO,  KC_NO,  KC_NO,    KC_NO,
     KC_ESC,   KC_ENTER,    KC_SPC, KC_TAB, KC_DEL, KC_INS,                                                                      KC_NO,     KC_NO,     KC_NO,  KC_NO,   KC_NO,  KC_NO,
-    KC_NO,   OSM(MOD_LSFT),    RCS(KC_Z),    RCTL(KC_Z),     KC_BSPC,     KC_NO,                                                                      KC_NO,KC_F7,     KC_F8,     KC_F9,     KC_F10,     KC_F13,     
-    CW_TOGG,  KC_RGUI,  KC_RALT,  KC_RCTL,  KC_RSFT,     KC_NO,                                                                      KC_NO,    KC_F4,     KC_F5,     KC_F6,     KC_F11,     KC_F14,
-    KC_NO,  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                                                      KC_NO,      KC_F1,     KC_F2,     KC_F3,     KC_F12,  KC_F15,
-              KC_NO,   KC_NO,   KC_NO,  KC_NO,                                                                                       KC_NO,    KC_NO,  KC_NO,  KC_NO,
+    KC_INS,   OSM(MOD_LSFT),    RCS(KC_Z),    RCTL(KC_Z),     KC_BSPC,     KC_NO,                                                      OSM(MOD_LALT),KC_F7,     KC_F8,     KC_F9,     KC_F10,     KC_F13,     
+    CW_TOGG,  KC_RGUI,  KC_RALT,  KC_RCTL,  KC_RSFT,     KC_NO,                                                                      OSM(MOD_LSFT),    KC_F4,     KC_F5,     KC_F6,     KC_F11,     KC_F14,
+    KC_NO,  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                                                      OSM(MOD_LCTL),      KC_F1,     KC_F2,     KC_F3,     KC_F12,  KC_F15,
+              KC_NO,   KC_NO,   KC_NO,  KC_NO,                                                                                       OSM(MOD_LCTL|MOD_LSFT),    OSM(MOD_LALT|MOD_LSFT),  OSM(MOD_LALT|MOD_LSFT|MOD_LCTL),  KC_NO,
                                                       KC_NO,  KC_NO,                                               KC_NO,  KC_NO,
                                                                 KC_NO,                                               KC_NO,
-                                            KC_NO,  KC_NO,   KC_NO,                                                KC_NO,  KC_NO, KC_NO
+                                            KC_NO,  KC_NO,   TG(FUNCTION),                                                KC_NO,  KC_NO, KC_NO
   ),
 
   [CURSOR] = LAYOUT(
