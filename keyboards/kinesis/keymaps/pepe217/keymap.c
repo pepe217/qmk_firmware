@@ -12,12 +12,15 @@
 #define MISC 5
 
 bool is_alt_tab_active = false; // ADD this near the beginning of keymap.c
+bool is_clt_tab_active = false; // ADD this near the beginning of keymap.c
 uint16_t alt_tab_timer = 0;     // we will be using them soon.
+uint16_t clt_tab_timer = 0;     // we will be using them soon.
 enum custom_keycodes {          // Make sure have the awesome keycode ready
 
   ALT_TAB = SAFE_RANGE,
   VIM_SAVE,
   COPY_NEW_TAB,
+  CLT_TAB,
 };
 
 // shift key overrides
@@ -34,6 +37,18 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) { // This will do most of the grunt work with the keycodes.
+    case CLT_TAB:
+      if (record->event.pressed) {
+        if (!is_clt_tab_active) {
+          is_clt_tab_active = true;
+          register_code(KC_LALT);
+        }
+        clt_tab_timer = timer_read();
+        register_code(KC_TAB);
+      } else {
+        unregister_code(KC_TAB);
+      }
+      break;
     case ALT_TAB:
       if (record->event.pressed) {
         if (!is_alt_tab_active) {
@@ -98,9 +113,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_PLUS,       KC_4,     KC_3,     KC_2,     KC_0,     KC_5,                                                                      KC_6,     KC_1,     KC_7,     KC_8,     KC_9,     KC_MINS,
     KC_DEL,       KC_B,     KC_Y,     KC_O,     KC_U,     KC_QUOT,                                                                   KC_EQL,  KC_L,     KC_D,     KC_W,     KC_V,     KC_Z,
     KC_SLSH,      MT(MOD_LGUI, KC_C),     MT(MOD_LALT, KC_I),     MT(MOD_LCTL, KC_E),     MT(MOD_LSFT, KC_A),     KC_COMM,          KC_DOT,   MT(MOD_RSFT, KC_H),     MT(MOD_RCTL, KC_T),     MT(MOD_RALT, KC_S),     MT(MOD_RGUI, KC_N),     KC_Q,
-    KC_COLN,    KC_G,     KC_X,     KC_J,     KC_K,     KC_UNDS,                                                                   KC_R,  KC_ESC,     KC_M,     KC_F,     KC_P,     KC_SCLN,
+    KC_SCLN,    KC_G,     KC_X,     KC_J,     KC_K,     KC_UNDS,                                                                   KC_ESC,  KC_R,     KC_M,     KC_F,     KC_P,     KC_COLN,
                   KC_GRV,  KC_BSLS,  KC_LEFT,  KC_RIGHT,                                                                                        KC_UP,   KC_DOWN,  KC_LBRC,  KC_RBRC,  
-                                                      ALT_TAB,  OSL(CURSOR),                                             OSL(SYMBOL),  OSL(MISC),
+                                                      CLT_TAB,  ALT_TAB,                                             OSL(SYMBOL),  OSL(MISC),
                                                                 TG(NUMPAD),                                               KC_PGUP,
                                              KC_BSPC,  KC_TAB,   OSL(FUNCTION),                                               KC_PGDN,  LT(MISC, KC_ENTER), LT(SYMBOL, KC_SPC)
   ),
