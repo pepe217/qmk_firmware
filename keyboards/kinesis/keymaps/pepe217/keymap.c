@@ -23,6 +23,7 @@ enum custom_keycodes {          // Make sure have the awesome keycode ready
   CLT_TAB,
 };
 
+
 // shift key overrides
 const key_override_t comma_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_LPRN);
 const key_override_t dot_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_RPRN);
@@ -78,8 +79,43 @@ void matrix_scan_user(void) { // The very important timer.
       is_alt_tab_active = false;
     }
   }
+  if (is_clt_tab_active) {
+    if (timer_elapsed(clt_tab_timer) > 1000) {
+      unregister_code(KC_LALT);
+      is_clt_tab_active = false;
+    }
+  }
 }
 
+layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+    case ENGRAM:
+        rgblight_setrgb (0x00,  0x00, 0x00);
+        break;
+    case NUMPAD:
+        rgblight_setrgb (0x00,  0x00, 0x7E);
+        break;
+    case SYMBOL:
+        rgblight_setrgb (0x00,  0xFF, 0x00);
+        break;
+    case FUNCTION:
+        rgblight_setrgb (0x7a,  0x00, 0xff);
+        break;
+    case CURSOR:
+        rgblight_setrgb (0x7a,  0x00, 0xff);
+        break;
+    case MISC:
+        rgblight_setrgb (0x7a,  0x00, 0xff);
+        break;
+    case QWERTY:
+        rgblight_setrgb (0x7a,  0x00, 0xff);
+        break;
+    default: //  for any other layers, or the default layer
+        rgblight_setrgb (0x00,  0x00, 0x00);
+        break;
+    }
+  return state;
+}
 /****************************************************************************************************
 *
 * Keymap: Default Layer in Qwerty
@@ -111,9 +147,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [ENGRAM] = LAYOUT(
     CW_TOGG,       KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,         KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_PSCR,  KC_SCRL,  TO(0),  TG(QWERTY),    QK_BOOT,
     KC_PLUS,       KC_4,     KC_3,     KC_2,     KC_0,     KC_5,                                                                      KC_6,     KC_1,     KC_7,     KC_8,     KC_9,     KC_MINS,
-    KC_DEL,       KC_B,     KC_Y,     KC_O,     KC_U,     KC_QUOT,                                                                   KC_EQL,  KC_L,     KC_D,     KC_W,     KC_V,     KC_Z,
+    KC_DEL,       KC_B,     KC_Y,     KC_O,     KC_U,     KC_QUOT,                                                                   KC_ESC,  KC_L,     KC_D,     KC_W,     KC_V,     KC_Z,
     KC_SLSH,      MT(MOD_LGUI, KC_C),     MT(MOD_LALT, KC_I),     MT(MOD_LCTL, KC_E),     MT(MOD_LSFT, KC_A),     KC_COMM,          KC_DOT,   MT(MOD_RSFT, KC_H),     MT(MOD_RCTL, KC_T),     MT(MOD_RALT, KC_S),     MT(MOD_RGUI, KC_N),     KC_Q,
-    KC_SCLN,    KC_G,     KC_X,     KC_J,     KC_K,     KC_UNDS,                                                                   KC_ESC,  KC_R,     KC_M,     KC_F,     KC_P,     KC_COLN,
+    KC_SCLN,    KC_G,     KC_X,     KC_J,     KC_K,     KC_UNDS,                                                                   KC_COLN,  KC_R,     KC_M,     KC_F,     KC_P,     KC_EQL,
                   KC_GRV,  KC_BSLS,  KC_LEFT,  KC_RIGHT,                                                                                        KC_UP,   KC_DOWN,  KC_LBRC,  KC_RBRC,  
                                                       CLT_TAB,  ALT_TAB,                                             OSL(SYMBOL),  OSL(MISC),
                                                                 TG(NUMPAD),                                               KC_PGUP,
@@ -124,10 +160,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,   KC_ENTER,    KC_SPC, KC_TAB, KC_DEL, KC_INS,                                                                      KC_CIRC,  KC_DLR,   KC_HASH,  KC_AT,    KC_EXLM,  KC_PIPE,
     KC_TAB,   OSM(MOD_LSFT),    RCS(KC_Z),    RCTL(KC_Z),     KC_BSPC,    KC_A,                                                                      KC_PERC,  KC_P7,    KC_P8,    KC_P9,    KC_COLN,  KC_K,
     KC_NO,  KC_RGUI,  KC_RALT,  KC_RCTL,  KC_RSFT,     KC_B,                                                                      KC_PLUS,  KC_P4,    KC_P5,    KC_P6,    KC_MINS,  KC_J,
-    KC_NO, KC_NO,KC_NO,     KC_NO,     KC_UNDS,     KC_C,                                                                      KC_ASTR,  KC_P1,    KC_P2,    KC_P3,    KC_SLSH,  KC_G,
-              KC_NO,   KC_NO,   KC_NO,  KC_NO,                                                                                       KC_EQL,   KC_DOT,   KC_LPRN,  KC_RPRN,
-                                                      KC_D,  KC_E,                                               KC_LT,  KC_GT,
-                                                                KC_F,                                               KC_COMM,
+    KC_NO, KC_NO,KC_NO,     KC_AMPR,     KC_UNDS,     KC_C,                                                                      KC_ASTR,  KC_P1,    KC_P2,    KC_P3,    KC_SLSH,  KC_G,
+              KC_NO,   KC_F,   KC_E,  KC_D,                                                                                       KC_EQL,   KC_DOT,   KC_LPRN,  KC_RPRN,
+                                                      KC_TRNS,  KC_TRNS,                                               KC_LT,  KC_GT,
+                                                                TG(NUMPAD),                                               KC_COMM,
                                             KC_BSPC,  KC_DEL,   TG(NUMPAD),                                                KC_NO,  KC_ENTER, KC_P0
   ),
   [SYMBOL] = LAYOUT(
@@ -171,7 +207,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,   KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
     KC_NO,   KC_9,    KC_8,    KC_7,     KC_6,    KC_5,                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
     KC_NO,   KC_3,    KC_2,    KC_1,     KC_0,    KC_4,                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
-    KC_NO,   LGUI(KC_1),    LGUI(KC_2),    LGUI(KC_3),     LGUI(KC_4),    LGUI(KC_5),                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
+    KC_NO,   LCTL(KC_4),    LCTL(KC_3),    LCTL(KC_2),     LCTL(KC_1),    LCTL(KC_5),                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
              KC_NO,    KC_NO,    KC_NO,     KC_NO,                                                                                      KC_NO,    KC_NO,  KC_NO,  KC_NO,
                                                       KC_NO,  KC_NO,                                               COPY_NEW_TAB,  VIM_SAVE,
                                                               KC_NO,                                               KC_NO,
