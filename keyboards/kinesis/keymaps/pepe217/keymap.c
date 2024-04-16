@@ -42,7 +42,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         if (!is_clt_tab_active) {
           is_clt_tab_active = true;
-          register_code(KC_LALT);
+          register_code(KC_LCTL);
         }
         clt_tab_timer = timer_read();
         register_code(KC_TAB);
@@ -150,7 +150,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [ENGRAM] = LAYOUT(
     CW_TOGG,       KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,         KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_PSCR,  KC_SCRL,  TO(0),  TG(QWERTY),    QK_BOOT,
-    KC_PLUS,       KC_4,     KC_3,     KC_2,     KC_0,     KC_5,                                                                      KC_6,     KC_1,     KC_7,     KC_8,     KC_9,     KC_MINS,
+    KC_PLUS,       KC_4,     KC_3,     KC_2,     KC_1,     KC_5,                                                                      KC_6,     KC_0,     KC_7,     KC_8,     KC_9,     KC_MINS,
     KC_DEL,       KC_B,     KC_Y,     KC_O,     KC_U,     KC_QUOT,                                                                   KC_ESC,  KC_L,     KC_D,     KC_W,     KC_V,     KC_Z,
     KC_SLSH,      MT(MOD_LGUI, KC_C),     MT(MOD_LALT, KC_I),     MT(MOD_LCTL, KC_E),     MT(MOD_LSFT, KC_A),     KC_COMM,          KC_DOT,   MT(MOD_RSFT, KC_H),     MT(MOD_RCTL, KC_T),     MT(MOD_RALT, KC_S),     MT(MOD_RGUI, KC_N),     KC_Q,
     KC_SCLN,    KC_G,     KC_X,     KC_J,     KC_K,     KC_UNDS,                                                                   KC_COLN,  KC_R,     KC_M,     KC_F,     KC_P,     KC_EQL,
@@ -164,7 +164,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,   KC_ENTER,    KC_SPC, KC_TAB, KC_DEL, KC_INS,                                                                      KC_CIRC,  KC_DLR,   KC_HASH,  KC_AT,    KC_EXLM,  KC_PIPE,
     KC_TAB,   OSM(MOD_LSFT),    RCS(KC_Z),    RCTL(KC_Z),     KC_BSPC,    KC_A,                                                                      KC_PERC,  KC_P7,    KC_P8,    KC_P9,    KC_COLN,  KC_K,
     KC_NO,  KC_RGUI,  KC_RALT,  KC_RCTL,  KC_RSFT,     KC_B,                                                                      KC_PLUS,  KC_P4,    KC_P5,    KC_P6,    KC_MINS,  KC_J,
-    KC_NO, KC_NO,KC_NO,     KC_AMPR,     KC_UNDS,     KC_C,                                                                      KC_ASTR,  KC_P1,    KC_P2,    KC_P3,    KC_SLSH,  KC_G,
+    KC_NO, KC_NO,KC_NO,     KC_AMPR,     KC_UNDS,     KC_C,                                                                      KC_ASTR,  KC_P1,    KC_P2,    KC_P3,    KC_SLSH,  LSFT(KC_G),
               KC_NO,   KC_F,   KC_E,  KC_D,                                                                                       KC_EQL,   KC_DOT,   KC_LPRN,  KC_RPRN,
                                                       KC_TRNS,  KC_TRNS,                                               KC_LT,  KC_GT,
                                                                 TG(NUMPAD),                                               KC_COMM,
