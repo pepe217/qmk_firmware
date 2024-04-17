@@ -1,0 +1,140 @@
+#include QMK_KEYBOARD_H
+
+#define QWERTY 6
+#define ENGRAM 0
+#define NUMPAD 1
+#define SYMBOL 2
+#define FUNCTION 3
+#define CURSOR 4 
+#define MISC 5
+
+bool is_alt_tab_active = false; // ADD this near the beginning of keymap.c
+bool is_clt_tab_active = false; // ADD this near the beginning of keymap.c
+uint16_t alt_tab_timer = 0;     // we will be using them soon.
+uint16_t clt_tab_timer = 0;     // we will be using them soon.
+enum custom_keycodes {          // Make sure have the awesome keycode ready
+
+  ALT_TAB = SAFE_RANGE,
+  VIM_SAVE,
+  COPY_NEW_TAB,
+  CLT_TAB,
+};
+
+
+// shift key overrides
+const key_override_t comma_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_LPRN);
+const key_override_t dot_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_RPRN);
+// const key_override_t lparen_override = ko_make_basic(MOD_MASK_SHIFT, KC_LPRN, KC_LABK);
+// const key_override_t rparen_override = ko_make_basic(MOD_MASK_SHIFT, KC_RPRN, KC_RABK);
+
+
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &comma_override, &dot_override,
+    NULL // Null terminate the array of overrides!
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) { // This will do most of the grunt work with the keycodes.
+    case CLT_TAB:
+      if (record->event.pressed) {
+        if (!is_clt_tab_active) {
+          is_clt_tab_active = true;
+          register_code(KC_LCTL);
+        }
+        clt_tab_timer = timer_read();
+        register_code(KC_TAB);
+      } else {
+        unregister_code(KC_TAB);
+      }
+      break;
+    case ALT_TAB:
+      if (record->event.pressed) {
+        if (!is_alt_tab_active) {
+          is_alt_tab_active = true;
+          register_code(KC_LALT);
+        }
+        alt_tab_timer = timer_read();
+        register_code(KC_TAB);
+      } else {
+        unregister_code(KC_TAB);
+      }
+      break;
+    case VIM_SAVE:
+      SEND_STRING(SS_TAP(X_ESC) ":w" SS_TAP(X_ENTER));
+      break;
+    case COPY_NEW_TAB:
+      SEND_STRING(SS_LCTL("ct") SS_DELAY(100) SS_LCTL(SS_TAP(X_V)) SS_TAP(X_ENTER));
+      break;
+  }
+  return true;
+}
+
+void keyboard_post_init_user(void) {
+  // Call the post init code.
+  rgblight_sethsv_range(0, 0, 0, 0, 4);
+}
+void matrix_scan_user(void) { // The very important timer.
+  if (is_alt_tab_active) {
+    if (timer_elapsed(alt_tab_timer) > 1000) {
+      unregister_code(KC_LALT);
+      is_alt_tab_active = false;
+    }
+  }
+  if (is_clt_tab_active) {
+    if (timer_elapsed(clt_tab_timer) > 1000) {
+      unregister_code(KC_LALT);
+      is_clt_tab_active = false;
+    }
+  }
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+    case ENGRAM:
+        rgblight_sethsv_at (0x00,  0x00, 0x00, 3);
+        break;
+    case NUMPAD:
+        rgblight_sethsv_at (HSV_GREEN, 3);
+        break;
+    case SYMBOL:
+        rgblight_sethsv_at (HSV_RED, 3);
+        break;
+    case FUNCTION:
+        rgblight_sethsv_at (HSV_WHITE, 3);
+        break;
+    case CURSOR:
+        rgblight_sethsv_at (HSV_ORANGE, 3);
+        break;
+    case MISC:
+        rgblight_sethsv_at (HSV_BLUE, 3);
+        break;
+    case QWERTY:
+        rgblight_sethsv_at (0x00,  0x00, 0x00, 3);
+        break;
+    default: //  for any other layers, or the default layer
+        rgblight_sethsv_at (0x00,  0x00, 0x00, 3);
+        break;
+    }
+  return state;
+}
+
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+	[ENGRAM] = LAYOUT_split_3x6_5(KC_DEL, KC_B, KC_Y, KC_O, KC_U, KC_QUOT, KC_ESC, KC_L, KC_D, KC_W, KC_V, KC_Z, KC_SLSH, LGUI_T(KC_C), LALT_T(KC_I), LCTL_T(KC_E), LSFT_T(KC_A), KC_COMM, KC_DOT, RSFT_T(KC_H), RCTL_T(KC_T), RALT_T(KC_S), RGUI_T(KC_N), KC_Q, KC_COLN, KC_G, KC_X, KC_J, KC_K, KC_UNDS, LCTL(KC_TAB), OSL(3), TG(2), OSL(2), KC_SCLN, KC_R, KC_M, KC_F, KC_P, KC_EQL, KC_LEFT, KC_RGHT, KC_BSPC, LT(3,KC_TAB), TG(1), OSL(5), LT(5,KC_ENT), LT(2,KC_SPC), KC_UP, KC_DOWN),
+	[NUMPAD] = LAYOUT_split_3x6_5(KC_DEL, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_CIRC, KC_PERC, KC_7, KC_8, KC_9, KC_COLN, KC_K, KC_PIPE, KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, KC_AMPR, KC_PPLS, KC_4, KC_5, KC_6, KC_MINS, KC_J, KC_A, KC_B, KC_C, KC_D, KC_E, KC_F, LCTL(KC_Z), KC_TILD, KC_LT, KC_GT, KC_PAST, KC_1, KC_2, KC_3, KC_SLSH, LSFT(KC_G), KC_LEFT, KC_RGHT, KC_BSPC, LT(3,KC_TAB), KC_TRNS, KC_COMM, KC_PENT, KC_P0, KC_PEQL, KC_PDOT),
+	[SYMBOL] = LAYOUT_split_3x6_5(KC_EXLM, KC_LBRC, KC_QUOT, KC_DQUO, KC_RBRC, KC_QUES, KC_ESC, KC_BSPC, KC_TAB, KC_SPC, KC_ENT, KC_NO, KC_HASH, KC_CIRC, KC_EQL, KC_UNDS, KC_DLR, KC_ASTR, KC_DOT, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI, KC_NO, KC_AT, KC_LT, KC_PIPE, KC_MINS, KC_GT, KC_SLSH, KC_TILD, KC_BSLS, KC_TRNS, KC_NO, KC_SCLN, KC_DEL, LSFT(KC_TAB), KC_LPRN, KC_RPRN, KC_EQL, KC_AMPR, KC_LCBR, KC_RCBR, KC_PERC, KC_GRV, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO),
+	[FUNCTION] = LAYOUT_split_3x6_5(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, OSM(MOD_LALT), KC_F7, KC_F8, KC_F9, KC_F10, OSM(MOD_LSFT|MOD_LALT), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, OSM(MOD_LCTL), KC_F4, KC_F5, KC_F6, KC_F11, OSM(MOD_LSFT), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, OSM(MOD_LCTL|MOD_LALT), KC_F1, KC_F2, KC_F3, KC_F12, OSM(MOD_LCTL|MOD_LSFT), KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, CW_TOGG, KC_PSCR, KC_VOLU, KC_VOLD),
+	[CURSOR] = LAYOUT_split_3x6_5(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO),
+	[MISC] = LAYOUT_split_3x6_5(LGUI(KC_1), KC_9, KC_8, KC_7, KC_6, KC_5, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, LGUI(KC_2), KC_3, KC_2, KC_1, KC_0, KC_4, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, LGUI(KC_3), LCTL(KC_4), LCTL(KC_3), LCTL(KC_2), LCTL(KC_1), LCTL(KC_5), LSFT(KC_INS), KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RCS(KC_C), RCS(KC_V), LCTL(KC_C), LCTL(KC_V), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO)
+};
+
+#if defined(ENCODER_ENABLE) && defined(ENCODER_MAP_ENABLE)
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+
+};
+#endif // defined(ENCODER_ENABLE) && defined(ENCODER_MAP_ENABLE)
+
+
+
+
+
