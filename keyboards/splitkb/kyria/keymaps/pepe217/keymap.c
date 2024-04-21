@@ -39,7 +39,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         if (!is_clt_tab_active) {
           is_clt_tab_active = true;
-          register_code(KC_LCTL);
+      	  unregister_code(KC_LCTL);
         }
         clt_tab_timer = timer_read();
         register_code(KC_TAB);
@@ -71,7 +71,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 void keyboard_post_init_user(void) {
   // Call the post init code.
-  rgblight_sethsv_range(0, 0, 0, 0, 4);
+  rgblight_sethsv_range(0, 0, 0, 0, 12);
 }
 void matrix_scan_user(void) { // The very important timer.
   if (is_alt_tab_active) {
@@ -91,28 +91,28 @@ void matrix_scan_user(void) { // The very important timer.
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
     case ENGRAM:
-        rgblight_sethsv_at (0x00,  0x00, 0x00, 3);
+        rgblight_sethsv_range (0x00,  0x00, 0x00, 0, 12);
         break;
     case NUMPAD:
-        rgblight_sethsv_at (HSV_GREEN, 3);
+        rgblight_sethsv_range (HSV_GREEN, 0, 12);
         break;
     case SYMBOL:
-        rgblight_sethsv_at (HSV_RED, 3);
+        rgblight_sethsv_range (HSV_RED, 0, 12);
         break;
     case FUNCTION:
-        rgblight_sethsv_at (HSV_WHITE, 3);
+        rgblight_sethsv_range (HSV_WHITE, 0, 12);
         break;
     case CURSOR:
-        rgblight_sethsv_at (HSV_ORANGE, 3);
+        rgblight_sethsv_range (HSV_ORANGE, 0, 12);
         break;
     case MISC:
-        rgblight_sethsv_at (HSV_BLUE, 3);
+        rgblight_sethsv_range (HSV_BLUE, 0, 12);
         break;
     case QWERTY:
-        rgblight_sethsv_at (0x00,  0x00, 0x00, 3);
+        rgblight_sethsv_range (0x00,  0x00, 0x00, 0, 12);
         break;
     default: //  for any other layers, or the default layer
-        rgblight_sethsv_at (0x00,  0x00, 0x00, 3);
+        rgblight_sethsv_range (0x00,  0x00, 0x00, 0, 12);
         break;
     }
   return state;

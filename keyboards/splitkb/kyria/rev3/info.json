@@ -118,9 +118,9 @@
         }
     },
     "rgblight": {
-        "led_count": 62,
+        "led_count": 12,
         "split": true,
-        "split_count": [31, 31],
+        "split_count": [6, 6],
         "max_brightness": 128
     },
     "ws2812": {

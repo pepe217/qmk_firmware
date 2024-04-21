@@ -85,7 +85,7 @@ void matrix_scan_user(void) { // The very important timer.
   }
   if (is_clt_tab_active) {
     if (timer_elapsed(clt_tab_timer) > 1000) {
-      unregister_code(KC_LALT);
+      unregister_code(KC_LCTL);
       is_clt_tab_active = false;
     }
   }

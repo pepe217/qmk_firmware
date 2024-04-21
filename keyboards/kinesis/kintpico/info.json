@@ -22,6 +22,13 @@
     "build": {
         "debounce_type": "sym_eager_pk"
     },
+    "rgblight": {
+        "led_count": 4,
+        "max_brightness": 128
+    },
+    "ws2812": {
+        "pin": "GP0"
+    },
     "matrix_pins": {
         "cols": ["GP11", "GP4", "GP3", "GP2", "GP1", "GP20", "GP21"],
         "rows": ["GP5", "GP6", "GP7", "GP8", "GP9", "GP10", "GP28", "GP27", "GP26", "GP22", "GP18", "GP19", "GP14", "GP13", "GP12"]
