@@ -69,10 +69,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-void keyboard_post_init_user(void) {
-  // Call the post init code.
-  rgblight_sethsv_range(0, 0, 0, 0, 12);
-}
 void matrix_scan_user(void) { // The very important timer.
   if (is_alt_tab_active) {
     if (timer_elapsed(alt_tab_timer) > 1000) {
@@ -82,55 +78,68 @@ void matrix_scan_user(void) { // The very important timer.
   }
   if (is_clt_tab_active) {
     if (timer_elapsed(clt_tab_timer) > 1000) {
-      unregister_code(KC_LALT);
+      unregister_code(KC_LCTL);
       is_clt_tab_active = false;
     }
   }
 }
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-    switch (get_highest_layer(state)) {
-    case ENGRAM:
-        rgblight_sethsv_range (0x00,  0x00, 0x00, 0, 12);
-        break;
-    case NUMPAD:
-        rgblight_sethsv_range (HSV_GREEN, 0, 12);
-        break;
-    case SYMBOL:
-        rgblight_sethsv_range (HSV_RED, 0, 12);
-        break;
-    case FUNCTION:
-        rgblight_sethsv_range (HSV_WHITE, 0, 12);
-        break;
-    case CURSOR:
-        rgblight_sethsv_range (HSV_ORANGE, 0, 12);
-        break;
-    case MISC:
-        rgblight_sethsv_range (HSV_BLUE, 0, 12);
-        break;
-    case QWERTY:
-        rgblight_sethsv_range (0x00,  0x00, 0x00, 0, 12);
-        break;
-    default: //  for any other layers, or the default layer
-        rgblight_sethsv_range (0x00,  0x00, 0x00, 0, 12);
-        break;
-    }
-  return state;
+// layer colors
+const rgblight_segment_t PROGMEM engram_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 12, HSV_OFF}
+);
+const rgblight_segment_t PROGMEM numpad_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 12, HSV_GREEN}
+);
+const rgblight_segment_t PROGMEM symbol_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 12, HSV_RED}
+);
+const rgblight_segment_t PROGMEM function_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 12, HSV_WHITE}
+);
+const rgblight_segment_t PROGMEM cursor_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 12, HSV_ORANGE}
+);
+const rgblight_segment_t PROGMEM misc_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 12, HSV_BLUE}
+);
+
+// Now define the array of layers. Later layers take precedence
+const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    engram_layer,
+	numpad_layer,
+	symbol_layer,
+	function_layer,
+	cursor_layer,
+	misc_layer
+);
+
+void keyboard_post_init_user(void) {
+    rgblight_layers = my_rgb_layers;
 }
 
+layer_state_t layer_state_set_user(layer_state_t state) {
+    rgblight_set_layer_state(0, layer_state_cmp(state, ENGRAM));
+    rgblight_set_layer_state(1, layer_state_cmp(state, NUMPAD));
+    rgblight_set_layer_state(2, layer_state_cmp(state, SYMBOL));
+    rgblight_set_layer_state(3, layer_state_cmp(state, FUNCTION));
+    rgblight_set_layer_state(4, layer_state_cmp(state, CURSOR));
+    rgblight_set_layer_state(5, layer_state_cmp(state, MISC));
+	return state;
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[ENGRAM] = LAYOUT_split_3x6_5(
-		KC_DEL, KC_B, KC_Y, KC_O, KC_U, KC_QUOT,					 											KC_ESC, KC_L, KC_D, KC_W, KC_V, KC_Z,
-		KC_SLSH, LGUI_T(KC_C), LALT_T(KC_I), LCTL_T(KC_E), LSFT_T(KC_A), KC_COMM,								 KC_DOT, RSFT_T(KC_H), RCTL_T(KC_T), RALT_T(KC_S), RGUI_T(KC_N), KC_Q,
-		KC_SCLN, KC_G, KC_X, KC_J, KC_K, KC_UNDS,								 LCTL(KC_TAB), OSL(3),		  TG(2), OSL(2), KC_COLN, KC_R, KC_M, KC_F, KC_P, KC_EQL,
-		KC_LEFT, KC_RGHT, KC_BSPC, LT(3,KC_TAB), TG(1), OSL(5), LT(5,KC_ENT), LT(2,KC_SPC), KC_UP, KC_DOWN
+		KC_DEL, KC_B, KC_Y, KC_O, KC_U, KC_QUOT,					 														 	 KC_ESC, KC_L, KC_D, KC_W, KC_V, KC_Z,
+		KC_SLSH, LGUI_T(KC_C), LALT_T(KC_I), LCTL_T(KC_E), LSFT_T(KC_A), KC_COMM,												 KC_DOT, RSFT_T(KC_H), RCTL_T(KC_T), RALT_T(KC_S), RGUI_T(KC_N), KC_Q,
+		KC_SCLN, KC_G, KC_X, KC_J, KC_K, KC_UNDS,								 CLT_TAB, OSL(FUNCTION),		  OSL(SYMBOL), OSL(MISC), KC_COLN, KC_R, KC_M, KC_F, KC_P, KC_EQL,
+						     KC_LEFT, KC_RGHT, KC_BSPC, LT(FUNCTION,KC_TAB), TG(NUMPAD), 					ALT_TAB, LT(MISC,KC_ENT), LT(SYMBOL,KC_SPC), KC_UP, KC_DOWN
 	),
 	[NUMPAD] = LAYOUT_split_3x6_5(
 		KC_DEL, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_CIRC,							KC_PERC, KC_7, KC_8, KC_9, KC_COLN, KC_K,
 		KC_PIPE, KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, KC_AMPR,				 		KC_PPLS, KC_4, KC_5, KC_6, KC_MINS, KC_J,
 		KC_A, KC_B, KC_C, KC_D, KC_E, KC_F, LCTL(KC_Z), KC_TILD,	KC_LT, KC_GT, KC_PAST, KC_1, KC_2, KC_3, KC_SLSH, LSFT(KC_G),
-		KC_LEFT, KC_RGHT, KC_BSPC, LT(3,KC_TAB), KC_TRNS, KC_COMM, KC_PENT, KC_P0, KC_PEQL, KC_PDOT
+		KC_LEFT, KC_RGHT, KC_BSPC, LT(FUNCTION,KC_TAB), KC_TRNS, KC_COMM, KC_PENT, KC_P0, KC_PEQL, KC_PDOT
 	),
 	[SYMBOL] = LAYOUT_split_3x6_5(
 		KC_EXLM, KC_LBRC, KC_QUOT, KC_DQUO, KC_RBRC, KC_QUES, KC_ESC, KC_BSPC, KC_TAB, KC_SPC, KC_ENT, KC_NO,
@@ -157,14 +166,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		RCS(KC_C), RCS(KC_V), LCTL(KC_C), LCTL(KC_V), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
 	)
 };
-
-#if defined(ENCODER_ENABLE) && defined(ENCODER_MAP_ENABLE)
-const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-
-};
-#endif // defined(ENCODER_ENABLE) && defined(ENCODER_MAP_ENABLE)
-
-
-
-
-
