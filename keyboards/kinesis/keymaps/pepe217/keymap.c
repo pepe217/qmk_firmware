@@ -184,11 +184,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [FUNCTION] = LAYOUT(
     KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,         KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_NO,  KC_NO,  KC_NO,    KC_NO,
-    KC_ESC,   KC_ENTER,    KC_SPC, KC_TAB, KC_DEL, KC_INS,                                                                      OSM(MOD_LCTL|MOD_LALT),     KC_NO,     KC_NO,  KC_NO,   KC_NO,  KC_NO,
-    KC_INS,   OSM(MOD_LSFT),    RCS(KC_Z),    RCTL(KC_Z),     KC_BSPC,     KC_NO,                                                      OSM(MOD_LALT),KC_F7,     KC_F8,     KC_F9,     KC_F10,     LSFT(KC_INS),     
-    CW_TOGG,  KC_RGUI,  KC_RALT,  KC_RCTL,  KC_RSFT,     KC_NO,                                                                      OSM(MOD_LSFT),    KC_F4,     KC_F5,     KC_F6,     KC_F11,     C_S_T(KC_C),
-    KC_NO,  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                                                      OSM(MOD_LCTL),      KC_F1,     KC_F2,     KC_F3,     KC_F12,  C_S_T(KC_V),
-              KC_NO,   KC_NO,   KC_NO,  KC_NO,                                                                                       OSM(MOD_LCTL|MOD_LSFT),    OSM(MOD_LALT|MOD_LSFT),  KC_KB_VOLUME_UP,  KC_KB_VOLUME_DOWN,
+    KC_ESC,   KC_ENTER,    KC_SPC, KC_TAB, KC_DEL, KC_INS,                                                                      KC_NO,     KC_NO,     KC_NO,  KC_NO,   KC_NO,  KC_NO,
+    KC_INS,   OSM(MOD_LSFT),    RCS(KC_Z),    RCTL(KC_Z),     KC_BSPC,     KC_NO,                                                      OSM(MOD_LALT), KC_F7, KC_F8, KC_F9, KC_F10, OSM(MOD_LSFT|MOD_LALT),     
+    CW_TOGG,  KC_RGUI,  KC_RALT,  KC_RCTL,  KC_RSFT,     KC_NO,                                                                      OSM(MOD_LCTL), KC_F4, KC_F5, KC_F6, KC_F11, OSM(MOD_LSFT),
+    KC_NO,  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                                                      OSM(MOD_LCTL|MOD_LALT), KC_F1, KC_F2, KC_F3, KC_F12, OSM(MOD_LCTL|MOD_LSFT),
+              KC_NO,   KC_NO,   KC_NO,  KC_NO,                                                                                       KC_NO,    KC_PSCR,  KC_KB_VOLUME_UP,  KC_KB_VOLUME_DOWN,
                                                       KC_NO,  KC_NO,                                               KC_NO,  KC_NO,
                                                                 KC_NO,                                               KC_NO,
                                             KC_NO,  KC_NO,   TG(FUNCTION),                                                KC_NO,  KC_NO, KC_NO
@@ -212,8 +212,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,   KC_9,    KC_8,    KC_7,     KC_6,    KC_5,                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
     KC_NO,   KC_3,    KC_2,    KC_1,     KC_0,    KC_4,                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
     KC_NO,   LCTL(KC_4),    LCTL(KC_3),    LCTL(KC_2),     LCTL(KC_1),    LCTL(KC_5),                                                                   KC_NO,   KC_NO,    KC_NO,  KC_NO,  KC_NO,    KC_NO,
-             KC_NO,    KC_NO,    KC_NO,     KC_NO,                                                                                      KC_NO,    KC_NO,  KC_NO,  KC_NO,
-                                                      KC_NO,  KC_NO,                                               COPY_NEW_TAB,  VIM_SAVE,
+             RCS(KC_C), RCS(KC_V), LCTL(KC_C), LCTL(KC_V),                                                                                      KC_NO,    KC_NO,  KC_NO,  KC_NO,
+                                                      LSFT(KC_INS),  KC_NO,                                               COPY_NEW_TAB,  VIM_SAVE,
                                                               KC_NO,                                               KC_NO,
                                              KC_NO,  KC_NO,   KC_NO,                                               KC_NO,  KC_NO, KC_NO
   ),
