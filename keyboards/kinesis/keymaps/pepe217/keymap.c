@@ -177,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [SYMBOL] = LAYOUT(
     KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,         KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_PSCR,  KC_SCRL,  KC_PAUS,  KC_NO,    QK_BOOT,
     KC_TILD,   KC_GRV,     KC_LPRN,     KC_RPRN,     KC_SCLN,     KC_COMM,                                                                      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
-    KC_EXLM,   KC_LCBR,     KC_QUOT,     KC_DQUO,     KC_RCBR,     KC_QUES,                                                                      OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_LCTL|MOD_LSFT), OSM(KC_LALT),     OSM(KC_LGUI),     KC_BSLS,
+    KC_EXLM,   KC_LCBR,     KC_QUOT,     KC_DQUO,     KC_RCBR,     KC_QUES,                                                                      OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_LCTL|MOD_LSFT), OSM(MOD_LALT),     OSM(MOD_LGUI),     KC_BSLS,
     KC_HASH,  KC_CIRC,     KC_EQL,     KC_MINS,     KC_DLR,     KC_ASTR,                                                                      KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
     KC_AT,  KC_LT,     KC_PIPE,     HOME,     KC_GT,     KC_SLSH,                                                                      KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,
               KC_AMPR,   KC_LBRC,   KC_RBRC,  KC_PLUS,                                                                                       KC_UP,    KC_DOWN,  KC_LBRC,  KC_RBRC,
