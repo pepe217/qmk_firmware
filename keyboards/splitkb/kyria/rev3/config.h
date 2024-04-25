@@ -34,3 +34,5 @@
 #    define OLED_DISPLAY_128X64
 #    define SPLIT_OLED_ENABLE
 #endif
+
+#define ONESHOT_TIMEOUT 5000  /* Time (in ms) before the one shot key is released */

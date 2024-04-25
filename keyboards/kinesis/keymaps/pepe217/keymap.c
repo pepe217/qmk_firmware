@@ -22,6 +22,10 @@ enum custom_keycodes {          // Make sure have the awesome keycode ready
   COPY_NEW_TAB,
   CLT_TAB,
   HOME,
+  LARRW,
+  J,
+  K,
+  G,
 };
 
 
@@ -39,6 +43,21 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) { // This will do most of the grunt work with the keycodes.
+    case J:
+		SEND_STRING("j");
+		layer_invert(NUMPAD);
+		break;
+    case K:
+		SEND_STRING("k");
+		layer_invert(NUMPAD);
+		break;
+    case G:
+		SEND_STRING("G");
+		layer_invert(NUMPAD);
+		break;
+    case LARRW:
+		SEND_STRING(" -> ");
+		break;
     case HOME:
       SEND_STRING("~/");
       break;
@@ -159,9 +178,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_SLSH,      MT(MOD_LGUI, KC_C),     MT(MOD_LALT, KC_I),     MT(MOD_LCTL, KC_E),     MT(MOD_LSFT, KC_A),     KC_COMM,          KC_DOT,   MT(MOD_RSFT, KC_H),     MT(MOD_RCTL, KC_T),     MT(MOD_RALT, KC_S),     MT(MOD_RGUI, KC_N),     KC_Q,
     KC_SCLN,    KC_G,     KC_X,     KC_J,     KC_K,     KC_UNDS,                                                                   KC_COLN,  KC_R,     KC_M,     KC_F,     KC_P,     KC_EQL,
                   KC_GRV,  KC_BSLS,  KC_LEFT,  KC_RIGHT,                                                                                        KC_UP,   KC_DOWN,  KC_LBRC,  KC_RBRC,  
-                                                      CLT_TAB,  ALT_TAB,                                             OSL(SYMBOL),  OSL(MISC),
-                                                                TG(NUMPAD),                                               KC_PGUP,
-                                             KC_BSPC,  KC_TAB,   OSL(FUNCTION),                                               KC_PGDN,  LT(MISC, KC_ENTER), LT(SYMBOL, KC_SPC)
+                                                      TG(NUMPAD),  ALT_TAB,                                             CLT_TAB,  OSL(MISC),
+                                                                KC_PGDN,                                               KC_PGUP,
+                                             KC_BSPC,  KC_TAB,   OSL(FUNCTION),                                               OSL(SYMBOL),  LT(MISC, KC_ENTER), KC_SPC
   ),
   [NUMPAD] = LAYOUT(
     KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,         KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_NO,  KC_NO,  KC_NO,    KC_NO,

@@ -19,6 +19,10 @@ enum custom_keycodes {          // Make sure have the awesome keycode ready
   COPY_NEW_TAB,
   CLT_TAB,
   HOME,
+  LARRW,
+  J,
+  K,
+  G,
 };
 
 
@@ -36,6 +40,21 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) { // This will do most of the grunt work with the keycodes.
+    case J:
+		SEND_STRING("j");
+		layer_invert(NUMPAD);
+		break;
+    case K:
+		SEND_STRING("k");
+		layer_invert(NUMPAD);
+		break;
+    case G:
+		SEND_STRING("G");
+		layer_invert(NUMPAD);
+		break;
+    case LARRW:
+		SEND_STRING(" -> ");
+		break;
     case HOME:
 		SEND_STRING("~/");
 		break;
@@ -136,20 +155,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[ENGRAM] = LAYOUT_split_3x6_5(
 		KC_DEL, KC_B, KC_Y, KC_O, KC_U, KC_QUOT,					 														 	 KC_ESC, KC_L, KC_D, KC_W, KC_V, KC_Z,
 		KC_SLSH, LGUI_T(KC_C), LALT_T(KC_I), LCTL_T(KC_E), LSFT_T(KC_A), KC_COMM,												 KC_DOT, RSFT_T(KC_H), RCTL_T(KC_T), RALT_T(KC_S), RGUI_T(KC_N), KC_Q,
-		KC_SCLN, KC_G, KC_X, KC_J, KC_K, KC_UNDS,								 CLT_TAB, OSL(FUNCTION),		   ALT_TAB,OSL(MISC), KC_COLN, KC_R, KC_M, KC_F, KC_P, KC_EQL,
-						     KC_LEFT, KC_RGHT, KC_BSPC, LT(FUNCTION,KC_TAB), TG(NUMPAD), 					OSL(SYMBOL), LT(SYMBOL,KC_ENT), KC_SPC, KC_UP, KC_DOWN
+		KC_SCLN, KC_G, KC_X, KC_J, KC_K, KC_UNDS,								 TG(NUMPAD), ALT_TAB,		   CLT_TAB,OSL(MISC), KC_COLN, KC_R, KC_M, KC_F, KC_P, KC_EQL,
+						     KC_LEFT, KC_RGHT, KC_BSPC, KC_TAB, OSL(FUNCTION), 					OSL(SYMBOL), LT(MISC,KC_ENT), KC_SPC, KC_UP, KC_DOWN
 	),
 	[NUMPAD] = LAYOUT_split_3x6_5(
-		KC_DEL, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_CIRC,							KC_PERC, KC_7, KC_8, KC_9, KC_COLN, KC_K,
-		KC_PIPE, KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, KC_AMPR,				 		KC_PPLS, KC_4, KC_5, KC_6, KC_MINS, KC_J,
-		KC_A, KC_B, KC_C, KC_D, KC_E, KC_F, LCTL(KC_Z), KC_TILD,	KC_LT, KC_GT, KC_PAST, KC_1, KC_2, KC_3, KC_SLSH, LSFT(KC_G),
-		KC_LEFT, KC_RGHT, KC_BSPC, LT(FUNCTION,KC_TAB), KC_TRNS, KC_COMM, KC_PENT, KC_P0, KC_PEQL, KC_PDOT
+		KC_DEL, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_CIRC,							KC_PERC, KC_7, KC_8, KC_9, KC_COLN, K,
+		KC_PIPE, KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, KC_AMPR,				 		KC_PPLS, KC_4, KC_5, KC_6, KC_MINS, J,
+		KC_A, KC_B, KC_C, KC_D, KC_E, KC_F, TG(NUMPAD), KC_TILD,	KC_LT, KC_GT, KC_PAST, KC_1, KC_2, KC_3, KC_SLSH, G,
+						  KC_LEFT, KC_RGHT, KC_BSPC, KC_W, KC_B,    KC_COMM, KC_PENT, KC_P0, KC_PEQL, KC_PDOT
 	),
 	[SYMBOL] = LAYOUT_split_3x6_5(
-		KC_EXLM, KC_LBRC, KC_QUOT, KC_DQUO, KC_RBRC, KC_QUES, KC_ESC, KC_BSPC, KC_TAB, KC_SPC, KC_ENT, KC_NO,
+		KC_EXLM, KC_LBRC, LARRW, KC_DQUO, KC_RBRC, KC_QUES, KC_ESC, KC_BSPC, KC_TAB, KC_SPC, KC_ENT, KC_NO,
 		KC_HASH, KC_CIRC, KC_EQL, KC_MINS, KC_DLR, KC_ASTR, OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_LCTL|MOD_LSFT), OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO,
 		KC_AT, KC_LT, KC_PIPE, HOME, KC_GT, KC_SLSH, KC_TILD, KC_BSLS, KC_TRNS, KC_NO, KC_SCLN, KC_DEL, LSFT(KC_TAB), KC_LPRN, KC_RPRN, KC_EQL,
-		KC_AMPR, KC_LCBR, KC_RCBR, KC_PERC, KC_GRV, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO
+								KC_AMPR, KC_LCBR, KC_RCBR, KC_PERC, KC_GRV, TG(SYMBOL), KC_NO, KC_NO, KC_NO, KC_NO
 	),
 	[FUNCTION] = LAYOUT_split_3x6_5(
 		KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, 								OSM(MOD_LALT), KC_F7, KC_F8, KC_F9, KC_F10, OSM(MOD_LSFT|MOD_LALT),
