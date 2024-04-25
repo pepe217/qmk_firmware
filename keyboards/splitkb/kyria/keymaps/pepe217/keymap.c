@@ -41,23 +41,33 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) { // This will do most of the grunt work with the keycodes.
     case J:
+		if (record->event.pressed) {
 		SEND_STRING("j");
 		layer_invert(NUMPAD);
-		break;
+		}
+		return false;
     case K:
+		if (record->event.pressed) {
 		SEND_STRING("k");
 		layer_invert(NUMPAD);
-		break;
+		}
+		return false;
     case G:
+		if (record->event.pressed) {
 		SEND_STRING("G");
 		layer_invert(NUMPAD);
-		break;
+		}
+		return false;
     case LARRW:
+		if (record->event.pressed) {
 		SEND_STRING(" -> ");
-		break;
+		}
+		return false;
     case HOME:
-		SEND_STRING("~/");
-		break;
+		if (record->event.pressed) {
+			SEND_STRING("~/");
+		}
+		return false;
     case CLT_TAB:
       if (record->event.pressed) {
         if (!is_clt_tab_active) {
@@ -83,11 +93,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
     case VIM_SAVE:
+		if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESC) ":w" SS_TAP(X_ENTER));
-      break;
+		}
+      return false;
     case COPY_NEW_TAB:
+		if (record->event.pressed) {
       SEND_STRING(SS_LCTL("ct") SS_DELAY(100) SS_LCTL(SS_TAP(X_V)) SS_TAP(X_ENTER));
-      break;
+		}
+      return false;
   }
   return true;
 }
@@ -155,8 +169,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[ENGRAM] = LAYOUT_split_3x6_5(
 		KC_DEL, KC_B, KC_Y, KC_O, KC_U, KC_QUOT,					 														 	 KC_ESC, KC_L, KC_D, KC_W, KC_V, KC_Z,
 		KC_SLSH, LGUI_T(KC_C), LALT_T(KC_I), LCTL_T(KC_E), LSFT_T(KC_A), KC_COMM,												 KC_DOT, RSFT_T(KC_H), RCTL_T(KC_T), RALT_T(KC_S), RGUI_T(KC_N), KC_Q,
-		KC_SCLN, KC_G, KC_X, KC_J, KC_K, KC_UNDS,								 TG(NUMPAD), ALT_TAB,		   CLT_TAB,OSL(MISC), KC_COLN, KC_R, KC_M, KC_F, KC_P, KC_EQL,
-						     KC_LEFT, KC_RGHT, KC_BSPC, KC_TAB, OSL(FUNCTION), 					OSL(SYMBOL), LT(MISC,KC_ENT), KC_SPC, KC_UP, KC_DOWN
+		KC_SCLN, KC_G, KC_X, KC_J, KC_K, KC_UNDS,								 TG(NUMPAD), ALT_TAB,		   CLT_TAB,OSL(SYMBOL), KC_COLN, KC_R, KC_M, KC_F, KC_P, KC_EQL,
+						     KC_LEFT, KC_RGHT, KC_BSPC, KC_TAB, OSL(FUNCTION), 					OSL(MISC), LT(MISC,KC_ENT), KC_SPC, KC_UP, KC_DOWN
 	),
 	[NUMPAD] = LAYOUT_split_3x6_5(
 		KC_DEL, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_CIRC,							KC_PERC, KC_7, KC_8, KC_9, KC_COLN, K,
@@ -167,7 +181,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[SYMBOL] = LAYOUT_split_3x6_5(
 		KC_EXLM, KC_LBRC, LARRW, KC_DQUO, KC_RBRC, KC_QUES, KC_ESC, KC_BSPC, KC_TAB, KC_SPC, KC_ENT, KC_NO,
 		KC_HASH, KC_CIRC, KC_EQL, KC_MINS, KC_DLR, KC_ASTR, OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_LCTL|MOD_LSFT), OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO,
-		KC_AT, KC_LT, KC_PIPE, HOME, KC_GT, KC_SLSH, KC_TILD, KC_BSLS, KC_TRNS, KC_NO, KC_SCLN, KC_DEL, LSFT(KC_TAB), KC_LPRN, KC_RPRN, KC_EQL,
+		KC_AT, KC_LT, KC_PIPE, HOME, KC_GT, KC_SLSH, KC_TILD, KC_BSLS, COPY_NEW_TAB, VIM_SAVE, KC_SCLN, KC_DEL, LSFT(KC_TAB), KC_LPRN, KC_RPRN, KC_EQL,
 								KC_AMPR, KC_LCBR, KC_RCBR, KC_PERC, KC_GRV, TG(SYMBOL), KC_NO, KC_NO, KC_NO, KC_NO
 	),
 	[FUNCTION] = LAYOUT_split_3x6_5(
