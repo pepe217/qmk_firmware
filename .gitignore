@@ -61,6 +61,7 @@ build/
 cmake-build-debug
 CMakeLists.txt
 *.pdf
+!/keyboards/splitkb/kyria/keymaps/pepe217/kyria.pdf
 
 # Let these ones be user specific, since we have so many different configurations
 *.code-workspace
