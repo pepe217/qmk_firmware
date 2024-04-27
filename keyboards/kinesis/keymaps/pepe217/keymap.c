@@ -15,8 +15,8 @@ bool is_alt_tab_active = false; // ADD this near the beginning of keymap.c
 bool is_clt_tab_active = false; // ADD this near the beginning of keymap.c
 uint16_t alt_tab_timer = 0;     // we will be using them soon.
 uint16_t clt_tab_timer = 0;     // we will be using them soon.
-enum custom_keycodes {          // Make sure have the awesome keycode ready
 
+enum custom_keycodes {          // Make sure have the awesome keycode ready
   ALT_TAB = SAFE_RANGE,
   VIM_SAVE,
   COPY_NEW_TAB,

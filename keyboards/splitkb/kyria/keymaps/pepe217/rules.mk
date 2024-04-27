@@ -9,5 +9,5 @@ AUDIO_ENABLE = no           # Audio output
 RGBLIGHT_ENABLE = yes        # Enable WS2812 RGB underlight. 
 CAPS_WORD_ENABLE = yes
 DEFERRED_EXEC_ENABLE = yes
-KEY_OVERRIDE_ENABLE = yes
 CONVERT_TO=liatris
+TAP_DANCE_ENABLE = yes

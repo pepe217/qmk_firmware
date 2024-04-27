@@ -128,6 +128,18 @@ void matrix_scan_user(void) { // The very important timer.
     }
 }
 
+// Tap Dance declarations
+enum {
+    TD_ESC_CAPS,
+};
+
+// Tap Dance definitions
+tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for Escape, twice for Caps Lock
+    [TD_ESC_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, CW_TOGG),
+};
+
+
 // layer colors
 const rgblight_segment_t PROGMEM engram_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 12, HSV_OFF}
@@ -174,9 +186,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[ENGRAM] = LAYOUT_split_3x6_5(
-		KC_DEL, KC_B, KC_Y, KC_O, KC_U, KC_QUOT,					 														 	 KC_ESC, KC_L, KC_D, KC_W, KC_V, KC_Z,
+		KC_DEL, KC_B, KC_Y, KC_O, KC_U, KC_QUOT,					 														 	 TD(TD_ESC_CAPS), KC_L, KC_D, KC_W, KC_V, KC_Z,
 		KC_SLSH, LGUI_T(KC_C), LALT_T(KC_I), LCTL_T(KC_E), LSFT_T(KC_A), KC_COMM,												 KC_DOT, RSFT_T(KC_H), RCTL_T(KC_T), RALT_T(KC_S), RGUI_T(KC_N), KC_Q,
-		KC_LBRC, KC_G, KC_X, KC_J, KC_K, KC_UNDS,								 TG(NUMPAD), ALT_TAB,		   CLT_TAB,OSL(SYMBOL), KC_COLN, KC_R, KC_M, KC_F, KC_P, KC_EQL,
+		KC_LBRC, KC_G, KC_X, KC_J, KC_K, KC_COLN,								 TG(NUMPAD), ALT_TAB,		   CLT_TAB,OSL(SYMBOL), KC_UNDS, KC_R, KC_M, KC_F, KC_P, KC_EQL,
 						     KC_LEFT, KC_RGHT, KC_BSPC, KC_TAB, OSL(FUNCTION), 					OSL(MISC), LT(MISC,KC_ENT), KC_SPC, KC_UP, KC_DOWN
 	),
 	[NUMPAD] = LAYOUT_split_3x6_5(
