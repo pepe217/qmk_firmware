@@ -7,124 +7,125 @@
 #define SYMBOL 2
 #define FUNCTION 3
 #define MISC 4
-#define CURSOR 5 
+#define CURSOR 5
 
-bool is_alt_tab_active = false; // ADD this near the beginning of keymap.c
-bool is_clt_tab_active = false; // ADD this near the beginning of keymap.c
-uint16_t alt_tab_timer = 0;     // we will be using them soon.
-uint16_t clt_tab_timer = 0;     // we will be using them soon.
-enum custom_keycodes {          // Make sure have the awesome keycode ready
+bool     is_alt_tab_active = false; // ADD this near the beginning of keymap.c
+bool     is_clt_tab_active = false; // ADD this near the beginning of keymap.c
+uint16_t alt_tab_timer     = 0;     // we will be using them soon.
+uint16_t clt_tab_timer     = 0;     // we will be using them soon.
+enum custom_keycodes {              // Make sure have the awesome keycode ready
 
-  ALT_TAB = SAFE_RANGE,
-  VIM_SAVE,
-  COPY_NEW_TAB,
-  CLT_TAB,
-  HOME,
-  LARRW,
-  J,
-  K,
-  G,
-  PARENS,
+    ALT_TAB = SAFE_RANGE,
+    VIM_SAVE,
+    COPY_NEW_TAB,
+    CLT_TAB,
+    HOME,
+    LARRW,
+    J,
+    K,
+    G,
+    PARENS,
 };
 
 const custom_shift_key_t custom_shift_keys[] = {
-  {KC_DOT , KC_RPRN}, // Shift . is )
-  {KC_COMM, KC_LPRN}, // Shift , is (
-  {KC_UNDS, KC_MINS }, // Shift _ is -
-  {KC_COLN, KC_SCLN}, // Shift : is ; 
-  {KC_LBRC, KC_LCBR}, // Shift [ is {
+    {KC_DOT, KC_RPRN},  // Shift . is )
+    {KC_COMM, KC_LPRN}, // Shift , is (
+    {KC_UNDS, KC_MINS}, // Shift _ is -
+    {KC_COLN, KC_SCLN}, // Shift : is ;
+    {KC_LBRC, KC_LCBR}, // Shift [ is {
 };
-uint8_t NUM_CUSTOM_SHIFT_KEYS =
-    sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
+uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-	 // for custom shift keys
-	 if (!process_custom_shift_keys(keycode, record)) { return false; }
-  switch (keycode) { // This will do most of the grunt work with the keycodes.
-    case J:
-		if (record->event.pressed) {
-		SEND_STRING("j");
-		layer_invert(NUMPAD);
-		}
-		return false;
-    case K:
-		if (record->event.pressed) {
-		SEND_STRING("k");
-		layer_invert(NUMPAD);
-		}
-		return false;
-    case G:
-		if (record->event.pressed) {
-		SEND_STRING("G");
-		layer_invert(NUMPAD);
-		}
-		return false;
-    case LARRW:
-		if (record->event.pressed) {
-		SEND_STRING(" -> ");
-		}
-		return false;
-    case PARENS:
-		if (record->event.pressed) {
-			SEND_STRING("()");
-		}
-		return false;
-    case HOME:
-		if (record->event.pressed) {
-			SEND_STRING("~/");
-		}
-		return false;
-    case CLT_TAB:
-      if (record->event.pressed) {
-        if (!is_clt_tab_active) {
-          is_clt_tab_active = true;
-      	  unregister_code(KC_LCTL);
-        }
-        clt_tab_timer = timer_read();
-        register_code(KC_TAB);
-      } else {
-        unregister_code(KC_TAB);
-      }
-      break;
-    case ALT_TAB:
-      if (record->event.pressed) {
-        if (!is_alt_tab_active) {
-          is_alt_tab_active = true;
-          register_code(KC_LALT);
-        }
-        alt_tab_timer = timer_read();
-        register_code(KC_TAB);
-      } else {
-        unregister_code(KC_TAB);
-      }
-      break;
-    case VIM_SAVE:
-		if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESC) ":w" SS_TAP(X_ENTER));
-		}
-      return false;
-    case COPY_NEW_TAB:
-		if (record->event.pressed) {
-      SEND_STRING(SS_LCTL("ct") SS_DELAY(100) SS_LCTL(SS_TAP(X_V)) SS_TAP(X_ENTER));
-		}
-      return false;
-  }
-  return true;
+    // for custom shift keys
+    if (!process_custom_shift_keys(keycode, record)) {
+        return false;
+    }
+    switch (keycode) { // This will do most of the grunt work with the keycodes.
+        case J:
+            if (record->event.pressed) {
+                SEND_STRING("j");
+                layer_invert(NUMPAD);
+            }
+            return false;
+        case K:
+            if (record->event.pressed) {
+                SEND_STRING("k");
+                layer_invert(NUMPAD);
+            }
+            return false;
+        case G:
+            if (record->event.pressed) {
+                SEND_STRING("G");
+                layer_invert(NUMPAD);
+            }
+            return false;
+        case LARRW:
+            if (record->event.pressed) {
+                SEND_STRING(" -> ");
+            }
+            return false;
+        case PARENS:
+            if (record->event.pressed) {
+                SEND_STRING("()");
+            }
+            return false;
+        case HOME:
+            if (record->event.pressed) {
+                SEND_STRING("~/");
+            }
+            return false;
+        case CLT_TAB:
+            if (record->event.pressed) {
+                if (!is_clt_tab_active) {
+                    is_clt_tab_active = true;
+                    unregister_code(KC_LCTL);
+                }
+                clt_tab_timer = timer_read();
+                register_code(KC_TAB);
+            } else {
+                unregister_code(KC_TAB);
+            }
+            break;
+        case ALT_TAB:
+            if (record->event.pressed) {
+                if (!is_alt_tab_active) {
+                    is_alt_tab_active = true;
+                    register_code(KC_LALT);
+                }
+                alt_tab_timer = timer_read();
+                register_code(KC_TAB);
+            } else {
+                unregister_code(KC_TAB);
+            }
+            break;
+        case VIM_SAVE:
+            if (record->event.pressed) {
+                SEND_STRING(SS_TAP(X_ESC) ":w" SS_TAP(X_ENTER));
+            }
+            return false;
+        case COPY_NEW_TAB:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LCTL("ct") SS_DELAY(100) SS_LCTL(SS_TAP(X_V)) SS_TAP(X_ENTER));
+            }
+            return false;
+    }
+    return true;
 }
 
 void matrix_scan_user(void) { // The very important timer.
-  if (is_alt_tab_active) {
-    if (timer_elapsed(alt_tab_timer) > 1000) {
-      unregister_code(KC_LALT);
-      is_alt_tab_active = false;
+    if (is_alt_tab_active) {
+        if (timer_elapsed(alt_tab_timer) > 1000) {
+            unregister_code(KC_LALT);
+            is_alt_tab_active = false;
+        }
     }
-  }
-  if (is_clt_tab_active) {
-    if (timer_elapsed(clt_tab_timer) > 1000) {
-      unregister_code(KC_LCTL);
-      is_clt_tab_active = false;
+    if (is_clt_tab_active) {
+        if (timer_elapsed(clt_tab_timer) > 1000) {
+            unregister_code(KC_LCTL);
+            is_clt_tab_active = false;
+        }
     }
-  }
 }
 
 // layer colors
@@ -153,8 +154,8 @@ const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
 	numpad_layer,
 	symbol_layer,
 	function_layer,
-	cursor_layer,
-	misc_layer
+	misc_layer,
+	cursor_layer
 );
 
 void keyboard_post_init_user(void) {
@@ -162,12 +163,12 @@ void keyboard_post_init_user(void) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(0, layer_state_cmp(state, ENGRAM));
-    rgblight_set_layer_state(1, layer_state_cmp(state, NUMPAD));
-    rgblight_set_layer_state(2, layer_state_cmp(state, SYMBOL));
-    rgblight_set_layer_state(3, layer_state_cmp(state, FUNCTION));
-    rgblight_set_layer_state(4, layer_state_cmp(state, CURSOR));
-    rgblight_set_layer_state(5, layer_state_cmp(state, MISC));
+    rgblight_set_layer_state(ENGRAM, layer_state_cmp(state, ENGRAM));
+    rgblight_set_layer_state(NUMPAD, layer_state_cmp(state, NUMPAD));
+    rgblight_set_layer_state(SYMBOL, layer_state_cmp(state, SYMBOL));
+    rgblight_set_layer_state(FUNCTION, layer_state_cmp(state, FUNCTION));
+    rgblight_set_layer_state(CURSOR, layer_state_cmp(state, CURSOR));
+    rgblight_set_layer_state(MISC, layer_state_cmp(state, MISC));
 	return state;
 }
 
@@ -194,7 +195,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, 								OSM(MOD_LALT), KC_F7, KC_F8, KC_F9, KC_F10, OSM(MOD_LSFT|MOD_LALT),
 		KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, 								OSM(MOD_LCTL), KC_F4, KC_F5, KC_F6, KC_F11, OSM(MOD_LSFT),
 		KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, OSM(MOD_LCTL|MOD_LALT), KC_F1, KC_F2, KC_F3, KC_F12, OSM(MOD_LCTL|MOD_LSFT),
-							 KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, CW_TOGG, KC_PSCR, KC_VOLU, KC_VOLD
+							 RCS(KC_C), RCS(KC_V), LCTL(KC_C), LCTL(KC_V), KC_TRNS, KC_TRNS, CW_TOGG, KC_PSCR, KC_VOLU, KC_VOLD
 	),
 	[MISC] = LAYOUT_split_3x6_5(
 		LGUI(KC_1), KC_9, KC_8, KC_7, KC_6, KC_5, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
