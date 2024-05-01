@@ -9,4 +9,4 @@ AUDIO_ENABLE = no           # Audio output
 RGBLIGHT_ENABLE = yes        # Enable WS2812 RGB underlight. 
 CAPS_WORD_ENABLE = yes
 DEFERRED_EXEC_ENABLE = yes
-KEY_OVERRIDE_ENABLE = yes
+REPEAT_KEY_ENABLE = yes
