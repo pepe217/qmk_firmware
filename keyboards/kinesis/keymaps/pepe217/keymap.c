@@ -95,9 +95,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_HASH, KC_CIRC, KC_EQL, KC_MINS, KC_DLR, KC_ASTR, OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_LCTL|MOD_LSFT), OSM(MOD_LALT), OSM(MOD_LGUI), KC_LCTL,
     KC_AT, KC_LT, KC_PIPE, KC_PLUS, KC_GT, KC_BSLS,                                                                      KC_SCLN, KC_DEL, LSFT(KC_TAB), KC_LPRN, KC_RPRN, KC_EQL,
               KC_AMPR,   KC_LBRC,   KC_RBRC,  KC_PLUS,                                                                                       KC_UP,    KC_DOWN,  KC_LBRC,  KC_RBRC,
-                                                      KC_ASTR,  KC_PERC,                                               KC_RGUI,  KC_RCTL,
-                                                                KC_SCLN,                                               KC_PGUP,
-                                            KC_BSLS,  KC_DOT,   TG(SYMBOL),                                                KC_PGDN,  KC_ENTER, KC_SPC
+                                                      KC_QUES,  KC_DOT,                                               KC_RGUI,  VIM_SAVE,
+                                                                KC_COLN,                                               KC_PGUP,
+                                            KC_PERC,  KC_SCLN,   TG(SYMBOL),                                                KC_PGDN,  KC_ENTER, KC_SPC
   ),
 
   [FUNCTION] = LAYOUT(
