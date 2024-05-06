@@ -1,6 +1,6 @@
 // Copyright 2023 QMK
 // SPDX-License-Identifier: GPL-2.0-or-later
- 
+
 #include QMK_KEYBOARD_H
 #include "pepe217.h"
 
@@ -69,10 +69,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [ENGRAM] = LAYOUT(
     CW_TOGG,       KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,         KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_PSCR,  KC_SCRL,  TO(0),  TG(QWERTY),    QK_BOOT,
     KC_LCTL,       KC_3,     KC_2,     KC_1,     KC_0,     KC_4,                                                                      KC_9,     KC_5,     KC_6,     KC_7,     KC_8,     KC_LSFT,
-		KC_TILD, KC_B, KC_Y, KC_O, KC_U, KC_QUOT,					 														 	 KC_ESC, KC_L, KC_D, KC_W, KC_V, KC_Z,
+		KC_TILD, KC_B, KC_Y, C_S_T(KC_O), KC_U, KC_QUOT,					 														 	 KC_ESC, KC_L, RCS(KC_D), KC_W, KC_V, KC_Z,
 		KC_SLSH, LGUI_T(KC_C), LALT_T(KC_I), LCTL_T(KC_E), LSFT_T(KC_A), KC_COMM,												 KC_DOT, RSFT_T(KC_H), RCTL_T(KC_T), RALT_T(KC_S), RGUI_T(KC_N), KC_Q,
     KC_LBRC, KC_G, KC_X, KC_J, KC_K, KC_UNDS,                                                                   KC_COLN, KC_R, KC_M, KC_F, KC_P, KC_EQL,
-                  KC_GRV,  KC_BSLS,  KC_LEFT,  KC_RIGHT,                                                                                        KC_UP,   KC_DOWN,  KC_LBRC,  KC_RBRC,  
+                  KC_GRV,  KC_BSLS,  KC_LEFT,  KC_RIGHT,                                                                                        KC_UP,   KC_DOWN,  KC_LBRC,  KC_RBRC,
                                                       TG(NUMPAD),  ALT_TAB,                                             CLT_TAB,  OSL(SYMBOL),
                                                                 KC_PGDN,                                               KC_PGUP,
                                              KC_BSPC,  KC_TAB,   OSL(FUNCTION),                                               QK_REP,  LT(MISC, KC_ENTER), KC_SPC
@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,   KC_ENTER,    KC_SPC, KC_TAB, KC_DEL, KC_INS,                                         KC_INS,   KC_DEL,    KC_TAB,  KC_SPC,  KC_ENTER,    KC_ESC,
 		LGUI(KC_1), KC_8, KC_7, KC_6, KC_5, KC_9, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
 		LGUI(KC_2), KC_3, KC_2, KC_1, KC_0, KC_4, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-		LGUI(KC_3), LCTL(KC_4), LCTL(KC_3), LCTL(KC_2), LCTL(KC_1), LCTL(KC_5), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO, 
+		LGUI(KC_3), LCTL(KC_4), LCTL(KC_3), LCTL(KC_2), LCTL(KC_1), LCTL(KC_5), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO,
              KC_NO,    KC_NO,    KC_NO,     KC_NO,                                                                                      KC_NO,    KC_NO,  KC_NO,  KC_NO,
                                                       LSFT(KC_INS),  KC_LSFT,                                               KC_NO,  KC_NO,
                                                               KC_NO,                                               KC_NO,

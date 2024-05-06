@@ -12,6 +12,7 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_UNDS, KC_MINS}, // Shift _ is -
     {KC_COLN, KC_SCLN}, // Shift : is ;
     {KC_BSPC, KC_DEL}, // Shift : is ;
+    {KC_LPRN, KC_RPRN},
 };
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
