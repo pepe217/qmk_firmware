@@ -47,7 +47,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[ENGRAM] = LAYOUT_split_3x6_5(
-		KC_TILD, KC_B, KC_Y, C_S_T(KC_O), KC_U, KC_QUOT,					 														 	 KC_ESC, KC_L, C_S_T(KC_D), KC_W, KC_V, KC_Z,
+		KC_TILD, KC_B, KC_Y, C_S_T(KC_O), KC_U, KC_ESC,					 														 	 KC_QUOT, KC_L, C_S_T(KC_D), KC_W, KC_V, KC_Z,
 		KC_UNDS, LGUI_T(KC_C), LALT_T(KC_I), LCTL_T(KC_E), LSFT_T(KC_A), KC_COMM,												 KC_DOT, RSFT_T(KC_H), RCTL_T(KC_T), RALT_T(KC_S), RGUI_T(KC_N), KC_Q,
 		KC_LT, KC_G, KC_X, KC_J, KC_K, KC_SLSH,								 TG(NUMPAD), ALT_TAB,		   CLT_TAB,OSL(SYMBOL), KC_COLN, KC_R, KC_M, KC_F, KC_P, KC_EQL,
 						     KC_LBRC, KC_RBRC, KC_BSPC, KC_TAB, OSL(FUNCTION), 					QK_REP, LT(MISC,KC_ENT), KC_SPC, KC_UP, KC_DOWN
