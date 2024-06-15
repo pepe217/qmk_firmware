@@ -21,4 +21,12 @@ enum custom_keycodes {
     G,
     PARENS,
 	DIR_UP,
+    NEXT_TAB,
+    REPLAY_MACRO,
 };
+
+//Tap Dance Declarations
+enum {
+  SHIFT_CAPS = 0
+};
+

@@ -16,12 +16,28 @@ const custom_shift_key_t custom_shift_keys[] = {
 };
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
+//Tap Dance Definitions
+tap_dance_action_t tap_dance_actions[] = {
+  //Tap once for Shift OS, twice for Caps Word
+  [SHIFT_CAPS]  = ACTION_TAP_DANCE_DOUBLE(OSM(MOD_LSFT), CW_TOGG)
+};
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // for custom shift keys
     if (!process_custom_shift_keys(keycode, record)) {
         return false;
     }
     switch (keycode) { // This will do most of the grunt work with the keycodes.
+        case NEXT_TAB:
+            if (record->event.pressed) {
+                SEND_STRING(":tabnext");
+            }
+            return false;
+        case REPLAY_MACRO:
+            if (record->event.pressed) {
+                SEND_STRING("@q");
+            }
+            return false;
         case J:
             if (record->event.pressed) {
                 SEND_STRING("j");
