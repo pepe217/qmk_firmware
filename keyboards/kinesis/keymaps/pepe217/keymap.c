@@ -67,7 +67,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [ENGRAM] = LAYOUT(
-    KC_ESC, OSM(MOD_LGUI),       LCTL(KC_B),    KC_PGUP,    KC_PGDN,    KC_F5,    CLT_TAB,     ALT_TAB, VIM_SAVE,    NEXT_TAB,         LGUI(KC_1), LGUI(KC_2),   LGUI(KC_3),   LGUI(KC_4),  KC_PSCR,  TO(0),  TG(QWERTY),    QK_BOOT,
+    KC_ESC, OSM(MOD_LGUI),       LCTL(KC_B),    KC_PGUP,    KC_PGDN,    KC_F5,    LCTL(KC_B), ALT_TAB,     CLT_TAB,     NEXT_TAB,         LGUI(KC_1), LGUI(KC_2),   KC_PSCR, LGUI(KC_3),   TO(0),  TG(QWERTY),    QK_BOOT,
     KC_GRV,   KC_4,          KC_3,          KC_2,          KC_1,          KC_5,     KC_9,     KC_0,          KC_6,          KC_7,          KC_8,          KC_BSLS,
     OSL(FUNCTION), KC_B,          KC_Y,          KC_O,          KC_U,   KC_QUOT,  KC_COLN,  KC_L,   KC_D,          KC_W,          KC_V,          KC_Z,
     KC_ESC,  KC_C,  KC_I,  KC_E,  KC_A,  KC_COMM,  KC_DOT,   KC_H,  KC_T,  KC_S,  KC_N,  KC_Q,
