@@ -1,13 +1,14 @@
 #pragma once
 
 #include "quantum.h"
-#define QWERTY 6
 #define ENGRAM 0
 #define NUMPAD 1
 #define SYMBOL 2
 #define FUNCTION 3
 #define MISC 4
 #define CURSOR 5
+#define QWERTY 6
+#define MAC_ENGRAM 7
 
 enum custom_keycodes {
     ALT_TAB = SAFE_RANGE,

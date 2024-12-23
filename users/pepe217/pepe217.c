@@ -1,20 +1,12 @@
 #include "pepe217.h"
 #include "features/custom_shift_keys.h"
+/*#include "features/achordion.h"*/
+#include "print.h"
 
 bool     is_alt_tab_active = false; // ADD this near the beginning of keymap.c
 bool     is_clt_tab_active = false; // ADD this near the beginning of keymap.c
 uint16_t alt_tab_timer     = 0;     // we will be using them soon.
 uint16_t clt_tab_timer     = 0;     // we will be using them soon.
-
-const custom_shift_key_t custom_shift_keys[] = {
-    {KC_DOT, KC_RPRN},  // Shift . is )
-    {KC_COMM, KC_LPRN}, // Shift , is (
-    {KC_UNDS, KC_MINS}, // Shift _ is -
-    {KC_COLN, KC_SCLN}, // Shift : is ;
-    {KC_BSPC, KC_DEL}, // Shift : is ;
-    {KC_LT, KC_GT},
-};
-uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
 //Tap Dance Definitions
 tap_dance_action_t tap_dance_actions[] = {
@@ -23,10 +15,12 @@ tap_dance_action_t tap_dance_actions[] = {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    // for custom shift keys
-    if (!process_custom_shift_keys(keycode, record)) {
-        return false;
-    }
+/*if (!process_achordion(keycode, record)) { return false; }*/
+    if (record->event.pressed) {
+    // On every key press, print the event's keycode and matrix position.
+    dprintf("kc=0x%04X, row=%2u, col=%2u\n",
+        keycode, record->event.key.row, record->event.key.col);
+  }
     switch (keycode) { // This will do most of the grunt work with the keycodes.
         case NEXT_TAB:
             if (record->event.pressed) {
@@ -113,7 +107,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-void matrix_scan_user(void) { // The very important timer.
+void matrix_scan_user(void) {
+      /*achordion_task();*/
+    // The very important timer.
     if (is_alt_tab_active) {
         if (timer_elapsed(alt_tab_timer) > 1000) {
             unregister_code(KC_LALT);

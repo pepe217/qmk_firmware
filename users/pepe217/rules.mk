@@ -1,2 +1,2 @@
-SRC += pepe217.c
-SRC += features/custom_shift_keys.c
+INTROSPECTION_KEYMAP_C = pepe217.c
+SRC += features/achordion.c
