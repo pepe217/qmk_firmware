@@ -94,9 +94,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [SYMBOL] = LAYOUT(
     KC_ESC,   LGUI(KC_UP),    LGUI(KC_LEFT),    LSFT(LGUI(KC_LEFT)),    LSFT(LGUI(KC_RIGHT)),    LGUI(KC_RIGHT),    KC_F6,    KC_F7,    KC_F8,         KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_PSCR,  KC_SCRL,  KC_PAUS,  AC_TOGG,    QK_BOOT,
-    KC_GRV,   KC_LBRC,     KC_LPRN,     KC_RPRN,     KC_RBRC,     KC_DOT,                                                                      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
-        KC_EXLM, KC_COMM, KC_LCBR, KC_RCBR, KC_SCLN, KC_QUES,                 KC_SCLN, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI, KC_NO,
-        KC_HASH, KC_CIRC, KC_EQL, KC_UNDS, KC_DLR, KC_ASTR,             KC_DOT, KC_BSPC, KC_TAB, KC_SPACE, KC_ENTER, KC_NO,
+    KC_GRV,   SM,     KC_LPRN,     KC_RPRN,     TESTS,     KC_DOT,                                                                      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+        KC_EXLM, KC_COMM, KC_LBRC, KC_RBRC, KC_SCLN, KC_QUES,                 KC_SCLN, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI, KC_NO,
+        KC_HASH, KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR, KC_ASTR,             KC_DOT, KC_BSPC, KC_TAB, KC_SPACE, KC_ENTER, KC_NO,
     KC_TILDE, KC_LT, KC_PIPE, KC_MINUS, KC_GT, KC_AT,                                                                      KC_BSLS, KC_DEL, LSFT(KC_TAB), KC_NO, KC_NO, KC_NO,
               KC_AMPR,   KC_QUOT,   KC_DQT,  KC_PLUS,                                                                                       KC_TRNS,    KC_TRNS,  KC_TRNS,  VIM_SAVE,
                                                       KC_BSLS,  KC_DOT,                                               KC_NO,  VIM_SAVE,

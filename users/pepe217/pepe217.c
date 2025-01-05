@@ -24,6 +24,16 @@ tap_dance_action_t tap_dance_actions[] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) { // This will do most of the grunt work with the keycodes.
+        case TESTS:
+            if (record->event.pressed) {
+                SEND_STRING("tests.");
+            }
+            return false;
+        case SM:
+            if (record->event.pressed) {
+                SEND_STRING("station_members.");
+            }
+            return false;
         case NEXT_TAB:
             if (record->event.pressed) {
                 SEND_STRING(":tabnext");

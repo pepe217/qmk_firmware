@@ -25,6 +25,8 @@ enum custom_keycodes {
     NEXT_TAB,
     REPLAY_MACRO,
     GUI_TAB,
+    TESTS,
+    SM,
 };
 
 //Tap Dance Declarations
