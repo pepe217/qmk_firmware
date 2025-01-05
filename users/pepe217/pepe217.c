@@ -1,12 +1,20 @@
 #include "pepe217.h"
-#include "features/custom_shift_keys.h"
-/*#include "features/achordion.h"*/
-#include "print.h"
 
 bool     is_alt_tab_active = false; // ADD this near the beginning of keymap.c
 bool     is_clt_tab_active = false; // ADD this near the beginning of keymap.c
+bool     is_gui_tab_active = false; // ADD this near the beginning of keymap.c
 uint16_t alt_tab_timer     = 0;     // we will be using them soon.
 uint16_t clt_tab_timer     = 0;     // we will be using them soon.
+uint16_t gui_tab_timer     = 0;     // we will be using them soon.
+
+const key_override_t coln_key_override =
+    ko_make_basic(MOD_MASK_SHIFT, KC_COLN, KC_SCLN); // Shift : is ;
+const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+
+const key_override_t* key_overrides[] = {
+    &coln_key_override,
+    &delete_key_override,
+};
 
 //Tap Dance Definitions
 tap_dance_action_t tap_dance_actions[] = {
@@ -15,12 +23,6 @@ tap_dance_action_t tap_dance_actions[] = {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-/*if (!process_achordion(keycode, record)) { return false; }*/
-    if (record->event.pressed) {
-    // On every key press, print the event's keycode and matrix position.
-    dprintf("kc=0x%04X, row=%2u, col=%2u\n",
-        keycode, record->event.key.row, record->event.key.col);
-  }
     switch (keycode) { // This will do most of the grunt work with the keycodes.
         case NEXT_TAB:
             if (record->event.pressed) {
@@ -65,11 +67,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("~/");
             }
             return false;
+        case GUI_TAB:
+            if (record->event.pressed) {
+                if (!is_gui_tab_active) {
+                    is_gui_tab_active = true;
+                    register_code(KC_LGUI);
+                }
+                gui_tab_timer = timer_read();
+                register_code(KC_TAB);
+            } else {
+                unregister_code(KC_TAB);
+            }
+            break;
         case CLT_TAB:
             if (record->event.pressed) {
                 if (!is_clt_tab_active) {
                     is_clt_tab_active = true;
-                    unregister_code(KC_LCTL);
+                    register_code(KC_LCTL);
                 }
                 clt_tab_timer = timer_read();
                 register_code(KC_TAB);
@@ -108,8 +122,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 void matrix_scan_user(void) {
-      /*achordion_task();*/
-    // The very important timer.
+    // The very important timers.
     if (is_alt_tab_active) {
         if (timer_elapsed(alt_tab_timer) > 1000) {
             unregister_code(KC_LALT);
@@ -120,6 +133,12 @@ void matrix_scan_user(void) {
         if (timer_elapsed(clt_tab_timer) > 1000) {
             unregister_code(KC_LCTL);
             is_clt_tab_active = false;
+        }
+    }
+    if (is_gui_tab_active) {
+        if (timer_elapsed(gui_tab_timer) > 1000) {
+            unregister_code(KC_LGUI);
+            is_gui_tab_active = false;
         }
     }
 }
