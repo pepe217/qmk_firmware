@@ -76,10 +76,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_SCLN, KC_B,          KC_Y,          LT(CURSOR, KC_O),          KC_U,   KC_COLN,  KC_X,  KC_L,   LT(SYMBOL,KC_D),          KC_W,          KC_V,          KC_MINUS,
     KC_Z,  MT(MOD_LGUI, KC_C),  MT(MOD_LALT, KC_I),  MT(MOD_LCTL, KC_E),  MT(MOD_LSFT, KC_A),  KC_COMM,  KC_K,   MT(MOD_RSFT, KC_H),  MT(MOD_RCTL, KC_T),  MT(MOD_RALT, KC_N),  MT(MOD_RGUI, KC_S),  KC_Q,
    LCTL(KC_B),  KC_QUOT, KC_UNDS, KC_EQUAL, KC_DOT, KC_SLSH,                                                                   KC_J, KC_M, KC_G, KC_P, KC_F, RCTL(KC_B),
-                KC_GRV,  KC_LBRC, KC_RBRC,  KC_BSLS,                                                                     KC_DOWN, KC_LPRN,KC_RPRN,KC_UP,
-                                                      KC_ESC,  KC_DEL,                                             QK_REP,  KC_TAB,
+                KC_GRV,  KC_LBRC, KC_RBRC,  KC_DOWN,                                                                     KC_UP, KC_LPRN,KC_RPRN,KC_BSLS,
+                                                      KC_ESC,  QK_REP,                                             KC_DEL,  KC_ENT,
                                                                 QK_LLCK,                                               QK_LLCK,
-                                             KC_SPC,  KC_BSPC,   TG(NUMPAD),                                               CW_TOGG, KC_ENT, KC_R
+                                             KC_SPC,  KC_TAB,   TG(NUMPAD),                                               CW_TOGG, KC_BSPC, KC_R
   ),
   [NUMPAD] = LAYOUT(
     KC_TRNS,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,         KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_PSCR,  QK_DYNAMIC_TAPPING_TERM_DOWN,  QK_DYNAMIC_TAPPING_TERM_DOWN,  QK_DYNAMIC_TAPPING_TERM_PRINT,    KC_TRNS,
