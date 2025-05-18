@@ -1,0 +1,15 @@
+OLED_ENABLE = no
+ENCODER_ENABLE = no       # Enables the use of one or more encoders
+RGB_MATRIX_ENABLE = no     # Disable keyboard RGB matrix, as it is enabled by default on rev3
+RGBLIGHT_ENABLE = yes      # Enable keyboard RGB underglow
+LAYER_LOCK_ENABLE = yes
+REPEAT_KEY_ENABLE = yes
+MOUSEKEY_ENABLE = yes
+TAP_DANCE_ENABLE = yes
+CAPS_WORD_ENABLE = yes
+NKRO_ENABLE = yes
+MOUSEKEY_ENABLE = yes       # Mouse keys
+EXTRAKEY_ENABLE = yes       # Audio control and System control
+AUTOCORRECT_ENABLE = yes
+DYNAMIC_TAPPING_TERM_ENABLE = yes
+KEY_OVERRIDE_ENABLE = yes

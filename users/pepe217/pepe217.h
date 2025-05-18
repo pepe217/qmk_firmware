@@ -9,6 +9,7 @@
 #define CURSOR 5
 #define QWERTY 6
 #define MAC_ENGRAM 1
+#define MOUSE 8
 
 enum custom_keycodes {
     ALT_TAB = SAFE_RANGE,
