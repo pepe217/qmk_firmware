@@ -54,15 +54,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 KC_AMPR  ,KC_PLUS   ,KC_PERC   ,KC_SCLN   ,KC_AT   ,               KC_NO   ,KC_NO   ,KC_NO   ,KC_NO   ,KC_NO
     ),
     [NUMPAD] = LAYOUT(
-        KC_ESC,   KC_ENTER,    KC_SPC, KC_TAB, KC_DEL, KC_INS,                   KC_TILDE, KC_CIRC,  KC_HASH,  KC_DLR,     KC_EXLM,  KC_PIPE,
-        KC_A, SHIFT_CAPS, LCTL(LSFT(KC_Z)), LCTL(KC_Z),KC_BSPC, KC_D,                            G, KC_7, KC_8, KC_9, KC_COLN, KC_PERC,
-        KC_B, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_E, KC_NO, KC_NO,                         KC_NO, KC_NO, K, KC_4, KC_5, KC_6, KC_MINS, KC_PLUS,
-                KC_TRNS   ,KC_TRNS   ,KC_TRNS   ,KC_TRNS   ,KC_TRNS   ,KC_TRNS,   KC_TRNS   ,KC_TRNS   ,KC_TRNS   ,KC_TRNS
+        KC_ESC,   KC_ENTER,    KC_SPC, KC_TAB, KC_DEL, KC_INS,                       G, KC_7, KC_8, KC_9, KC_COLN, KC_PERC,
+        KC_A, SHIFT_CAPS, LCTL(LSFT(KC_Z)), LCTL(KC_Z),KC_BSPC, KC_D,                K, KC_4, KC_5, KC_6, KC_MINS, KC_PLUS,
+        KC_TRNS, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_E, KC_NO, KC_NO,  KC_NO, KC_NO, J, KC_1, KC_2, KC_3, KC_SLSH, KC_ASTR,
+                KC_TRNS   ,KC_TRNS   ,KC_TRNS   ,KC_TRNS   ,KC_TRNS   ,KC_TRNS,   KC_TRNS   ,KC_0   ,KC_LBRC   ,KC_RBRC
     ),
     [CURSOR] = LAYOUT(
-        LGUI(KC_1), KC_8, KC_7, KC_6, KC_0, KC_9,                                                             KC_NO, KC_NO, KC_NO, KC_NO, TO(MAC_ENGRAM), TO(ENGRAM),
-        LGUI(KC_2), KC_4, KC_3, KC_2, KC_1, KC_5,                                                             KC_NO, KC_LEFT, KC_UP, KC_DOWN, KC_RIGHT, KC_NO,
-        LGUI(KC_3), LCTL(KC_4), LCTL(KC_3), LCTL(KC_2), LCTL(KC_1), LCTL(KC_5), KC_NO, KC_HOME,                   KC_PGUP, KC_PGDN, KC_END,  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+        LGUI(KC_1), KC_8, KC_7, KC_6, KC_0, KC_9,                   LGUI(KC_6), LGUI(KC_1), LGUI(KC_2), LGUI(KC_3),LGUI(KC_4) ,LGUI(KC_5) ,
+        LGUI(KC_2), KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO,                   TO(MAC_ENGRAM), KC_LEFT, KC_UP, KC_DOWN, KC_RIGHT, TO(ENGRAM),
+        KC_TRNS, LCTL(KC_4), LCTL(KC_3), LCTL(KC_2), LCTL(KC_1), LCTL(KC_5), KC_NO, KC_HOME,                   KC_PGUP, KC_PGDN, LGUI(KC_6), LGUI(KC_1), LGUI(KC_2), LGUI(KC_3),LGUI(KC_4) ,LGUI(KC_5) ,
                 KC_TRNS   ,KC_TRNS   ,KC_TRNS   ,KC_TRNS   ,KC_TRNS   , KC_TRNS   ,KC_TRNS   ,KC_TRNS   ,KC_TRNS   ,KC_TRNS
     ),
     [MOUSE] = LAYOUT(
