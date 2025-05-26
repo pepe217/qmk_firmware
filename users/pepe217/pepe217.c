@@ -22,6 +22,19 @@ tap_dance_action_t tap_dance_actions[] = {
   [SHIFT_CAPS]  = ACTION_TAP_DANCE_DOUBLE(OSM(MOD_LSFT), CW_TOGG)
 };
 
+enum combos {
+  KJ_ESC,
+  R_BSPC,
+};
+
+const uint16_t PROGMEM kj_combo[] = {KC_K, KC_J, COMBO_END};
+const uint16_t PROGMEM rb_combo[] = {KC_R, KC_BSPC, COMBO_END};
+
+combo_t key_combos[] = {
+  [KJ_ESC] = COMBO(kj_combo, KC_ESC),
+  [R_BSPC] = COMBO(rb_combo, CW_TOGG),
+};
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) { // This will do most of the grunt work with the keycodes.
         case TESTS:

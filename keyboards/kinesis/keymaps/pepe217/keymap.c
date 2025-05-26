@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_B,  MT(MOD_LGUI, KC_C),  MT(MOD_LALT, KC_I),  MT(MOD_LCTL, KC_E),  MT(MOD_LSFT, KC_A),  KC_COMM,  KC_K,   MT(MOD_RSFT, KC_H),  MT(MOD_RCTL, KC_T),  MT(MOD_RALT, KC_N),  MT(MOD_RGUI, KC_S),  KC_V,
         QK_LLCK,KC_QUOT, KC_SLSH, LT(CURSOR,KC_EQL),KC_DOT, KC_MINUS,                          KC_J,   KC_M ,LT(SYMBOL,KC_G), KC_P ,KC_F, QK_LLCK,
                   KC_BSLS,KC_LPRN,KC_RPRN,KC_DOWN,                                                                     KC_UP, KC_LBRC, KC_RBRC,KC_GRV,
-                                                      KC_ESC,  QK_REP,                                             KC_END,  KC_ENT,
+                                                      LT(FUNCTION, KC_ESC),  CW_TOGG,                                             KC_END,  KC_ENT,
                                                                 KC_RBRC,                                               KC_HOME,
                              LT(CURSOR, KC_SPC),  LT(NUMPAD, KC_TAB),   KC_LBRC,                                               KC_DEL, KC_BSPC, KC_R
   ),
@@ -115,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_NO,   KC_NO,   KC_NO,  LCTL(KC_Z),                                                                                       KC_KB_MUTE,    KC_PSCR,  KC_KB_VOLUME_DOWN,  KC_KB_VOLUME_UP,
                                                       LCTL(LSFT(KC_C)),  LCTL(LSFT(KC_V)),                                               KC_NO,  CW_TOGG,
                                                                 LALT(KC_INS),                                               KC_NO,
-                                            KC_BSPC,  KC_ESC,   TG(FUNCTION),                                                KC_NO,  KC_NO, KC_NO
+                                            KC_BSPC,  KC_ESC,   TG(FUNCTION),                                                KC_KB_MUTE,  KC_KB_VOLUME_DOWN, KC_KB_VOLUME_UP
   ),
 
   [CURSOR] = LAYOUT(
