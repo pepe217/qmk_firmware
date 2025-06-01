@@ -28,6 +28,7 @@ enum custom_keycodes {
     GUI_TAB,
     TESTS,
     SM,
+    DEVMONO,
 };
 
 //Tap Dance Declarations

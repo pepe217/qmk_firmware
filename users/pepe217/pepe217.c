@@ -42,6 +42,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("tests.");
             }
             return false;
+        case DEVMONO:
+            if (record->event.pressed) {
+                SEND_STRING("cd devel/monorepo");
+            }
+            return false;
         case SM:
             if (record->event.pressed) {
                 SEND_STRING("station_members.");

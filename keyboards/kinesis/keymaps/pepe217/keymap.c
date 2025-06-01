@@ -120,10 +120,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [CURSOR] = LAYOUT(
     KC_ESC,   LGUI(KC_UP),    LGUI(KC_LEFT),    LSFT(LGUI(KC_LEFT)),    LSFT(LGUI(KC_RIGHT)),    LGUI(KC_RIGHT),    KC_F6,    KC_F7,    KC_F8,         KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_PSCR,  KC_SCRL,  KC_PAUS,  AC_TOGG,    QK_BOOT,
-    KC_ESC,   KC_ENTER,    KC_SPC, KC_TAB, KC_DEL, KC_INS,                                         KC_INS,   TESTS,    SM,  KC_SPC,  KC_ENTER,    KC_ESC,
+    KC_ESC,   KC_ENTER,    KC_SPC, KC_TAB, KC_DEL, KC_INS,                                         KC_INS,   SM,  TESTS ,  DEVMONO,  KC_ENTER,    KC_ESC,
     LGUI(KC_1), KC_8, KC_7, KC_6, KC_0, KC_9,                                                       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    LGUI(KC_2), KC_4, KC_3, KC_2, KC_1, KC_5,                                                       KC_NO, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, KC_NO,
-    LGUI(KC_3), LCTL(KC_4), LCTL(KC_3), LCTL(KC_2), LCTL(KC_1), LCTL(KC_5),                         KC_NO, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_NO,
+    LGUI(KC_2), KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_5,                                                       KC_NO, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, KC_NO,
+    LGUI(KC_3), LCTL(KC_A), LCTL(KC_3), LCTL(KC_2), LCTL(KC_1), LCTL(KC_5),                         KC_NO, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_NO,
              KC_NO,    KC_NO,    KC_NO,     KC_NO,                                                                                      KC_NO,    KC_NO,  KC_NO,  KC_NO,
                                                       LSFT(KC_INS),  KC_LSFT,                                               KC_NO,  KC_NO,
                                                               KC_TRNS,                                               KC_TRNS,
