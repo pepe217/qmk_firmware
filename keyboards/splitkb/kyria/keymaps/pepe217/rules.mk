@@ -13,3 +13,4 @@ EXTRAKEY_ENABLE = yes       # Audio control and System control
 AUTOCORRECT_ENABLE = yes
 DYNAMIC_TAPPING_TERM_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
+COMBO_ENABLE = yes

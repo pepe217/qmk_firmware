@@ -10,6 +10,19 @@
 #define QWERTY 6
 #define MAC_ENGRAM 1
 #define MOUSE 8
+#define SYSTEM 9
+
+// Custom key defines
+#define TMUX_L  LCTL(KC_B) // tmux leader key
+#define COPY  LCTL(KC_C)
+#define CUT  LCTL(KC_X)
+#define PASTE  LCTL(KC_V)
+#define FIND  LCTL(KC_F)
+#define UNDO  LCTL(KC_Z)
+#define REDO  LSFT(LCTL(KC_Z))
+#define SELA  LCTL(KC_A)
+#define FINDN  LCTL(KC_G)
+#define FINDP  LSFT(LCTL(KC_G))
 
 enum custom_keycodes {
     ALT_TAB = SAFE_RANGE,
@@ -36,3 +49,7 @@ enum {
   SHIFT_CAPS = 0
 };
 
+enum combos {
+  KJ_ESC,
+  R_BSPC,
+};
