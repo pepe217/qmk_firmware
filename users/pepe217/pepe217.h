@@ -8,7 +8,6 @@
 #define MISC 4
 #define CURSOR 5
 #define QWERTY 6
-#define MAC_ENGRAM 1
 #define MOUSE 8
 #define SYSTEM 9
 
@@ -38,10 +37,12 @@ enum custom_keycodes {
 	DIR_UP,
     NEXT_TAB,
     REPLAY_MACRO,
-    GUI_TAB,
     TESTS,
     SM,
     DEVMONO,
+    VIM_CTRL_O,
+    MAC_COLON,
+    MAC_SCOLON,
 };
 
 //Tap Dance Declarations

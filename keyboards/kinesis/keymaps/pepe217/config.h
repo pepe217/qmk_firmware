@@ -1,1 +1,2 @@
 #define CHORDAL_HOLD
+#define SELECT_WORD_OS_DYNAMIC

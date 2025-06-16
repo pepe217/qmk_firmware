@@ -2,17 +2,12 @@
 
 bool     is_alt_tab_active = false; // ADD this near the beginning of keymap.c
 bool     is_clt_tab_active = false; // ADD this near the beginning of keymap.c
-bool     is_gui_tab_active = false; // ADD this near the beginning of keymap.c
 uint16_t alt_tab_timer     = 0;     // we will be using them soon.
 uint16_t clt_tab_timer     = 0;     // we will be using them soon.
-uint16_t gui_tab_timer     = 0;     // we will be using them soon.
 
-const key_override_t coln_key_override =
-    ko_make_basic(MOD_MASK_SHIFT, KC_COLN, KC_SCLN); // Shift : is ;
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 
 const key_override_t* key_overrides[] = {
-    &coln_key_override,
     &delete_key_override,
 };
 
@@ -31,6 +26,7 @@ combo_t key_combos[] = {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    int os_keycode;
     switch (keycode) { // This will do most of the grunt work with the keycodes.
         case TESTS:
             if (record->event.pressed) {
@@ -90,18 +86,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("~/");
             }
             return false;
-        case GUI_TAB:
-            if (record->event.pressed) {
-                if (!is_gui_tab_active) {
-                    is_gui_tab_active = true;
-                    register_code(KC_LGUI);
-                }
-                gui_tab_timer = timer_read();
-                register_code(KC_TAB);
-            } else {
-                unregister_code(KC_TAB);
-            }
-            break;
         case CLT_TAB:
             if (record->event.pressed) {
                 if (!is_clt_tab_active) {
@@ -115,10 +99,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
         case ALT_TAB:
+            // allow cmd+tab to work when in gui swap mode
+            os_keycode = KC_LALT;
+            if (mod_config(MOD_LGUI) == MOD_LCTL){
+                os_keycode = KC_LGUI;
+            }
             if (record->event.pressed) {
                 if (!is_alt_tab_active) {
                     is_alt_tab_active = true;
-                    register_code(KC_LALT);
+                    register_code(os_keycode);
                 }
                 alt_tab_timer = timer_read();
                 register_code(KC_TAB);
@@ -129,6 +118,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case VIM_SAVE:
             if (record->event.pressed) {
                 SEND_STRING(SS_TAP(X_ESC) ":w" SS_TAP(X_ENTER));
+            }
+            return false;
+        case VIM_CTRL_O:
+            // corrects for ctrl/gui swap to send ctrl+o always
+            if (record->event.pressed) {
+                if (mod_config(MOD_LGUI) == MOD_LCTL){
+                    SEND_STRING(SS_LGUI("o"));
+                } else {
+                    SEND_STRING(SS_LCTL("o"));
+                }
+            }
+            return false;
+        case MAC_COLON:
+            // corrects for colon swap with karabiner
+            if (record->event.pressed) {
+                if (mod_config(MOD_LGUI) == MOD_LCTL){
+                    SEND_STRING(";");
+                } else {
+                    SEND_STRING(":");
+                }
+            }
+            return false;
+        case MAC_SCOLON:
+            // corrects for colon swap with karabiner
+            if (record->event.pressed) {
+                if (mod_config(MOD_LGUI) == MOD_LCTL){
+                    SEND_STRING(":");
+                } else {
+                    SEND_STRING(";");
+                }
             }
             return false;
         case COPY_NEW_TAB:
@@ -147,8 +166,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void matrix_scan_user(void) {
     // The very important timers.
     if (is_alt_tab_active) {
+        // allow cmd+tab to work when in gui swap mode
+        int keycode = KC_LALT;
+        if (mod_config(MOD_LGUI) == MOD_LCTL){
+            keycode = KC_LGUI;
+        }
         if (timer_elapsed(alt_tab_timer) > 1000) {
-            unregister_code(KC_LALT);
+            unregister_code(keycode);
             is_alt_tab_active = false;
         }
     }
@@ -156,12 +180,6 @@ void matrix_scan_user(void) {
         if (timer_elapsed(clt_tab_timer) > 1000) {
             unregister_code(KC_LCTL);
             is_clt_tab_active = false;
-        }
-    }
-    if (is_gui_tab_active) {
-        if (timer_elapsed(gui_tab_timer) > 1000) {
-            unregister_code(KC_LGUI);
-            is_gui_tab_active = false;
         }
     }
 }

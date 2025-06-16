@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [SYMBOL] = LAYOUT(
         KC_NO, KC_NO, KC_LCBR, KC_RCBR, KC_HASH, KC_EXLM,                   KC_GRV, KC_DEL, LSFT(KC_TAB), KC_INS, KC_ESC, KC_NO,
         KC_NO, KC_CIRC, KC_ASTR, KC_DQT, KC_DLR, KC_TILDE,                  KC_DQT, KC_BSPC, KC_TAB, KC_SPACE, KC_ENTER, KC_NO,
-        KC_NO, KC_LT, KC_PIPE, KC_GRV, KC_GT, KC_AT,   TESTS  , DEVMONO,   DT_DOWN,  DT_UP ,DT_PRNT,KC_QUOT, KC_NO, AC_TOGG, KC_NO, KC_TRNS,
+        KC_NO, KC_LT, KC_PIPE, KC_GRV, KC_GT, KC_AT,       TESTS  , DEVMONO,   DT_DOWN,  DT_UP ,DT_PRNT,KC_QUOT, KC_NO, AC_TOGG, KC_NO, KC_TRNS,
                KC_AMPR   , KC_BSLS,KC_PERC   ,KC_SCLN    ,SM   ,               KC_NO   ,KC_NO   ,KC_NO   ,KC_NO   ,KC_NO
     ),
     [NUMPAD] = LAYOUT(
@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [CURSOR] = LAYOUT(
         CG_SWAP, KC_8, KC_7, KC_6, KC_0, KC_9,                                                                   CUT, LSFT(KC_TAB), UNDO, REDO, KC_TAB, CG_NORM,
         OSM(MOD_LSFT), KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, COPY,                                                      COPY, KC_LEFT ,KC_DOWN,KC_UP , KC_RIGHT, TO(ENGRAM),
-        KC_E, SELA, KC_NO, KC_NO, FIND, PASTE, LSFT(KC_TAB), KC_TAB,         LALT(KC_6), LALT(KC_5), PASTE, KC_HOME,KC_PGDN,KC_PGUP , KC_END, KC_NO,
+        KC_E, SELA, KC_NO, KC_NO, FIND, PASTE,                  LSFT(KC_TAB), KC_TAB,         LALT(KC_6), LALT(KC_5), PASTE, KC_HOME,KC_PGDN,KC_PGUP , KC_END, KC_NO,
                 REDO   ,FINDP   ,FINDN   ,KC_TRNS   ,KC_NO   , KC_TRNS   ,KC_TRNS   ,KC_TRNS   ,KC_TRNS   ,KC_TRNS
     ),
     [MOUSE] = LAYOUT(
