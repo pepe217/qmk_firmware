@@ -45,11 +45,6 @@ enum custom_keycodes {
     MAC_SCOLON,
 };
 
-//Tap Dance Declarations
-enum {
-  SHIFT_CAPS = 0
-};
-
 enum combos {
   KJ_ESC,
   R_BSPC,

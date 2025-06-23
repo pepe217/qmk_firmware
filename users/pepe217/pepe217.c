@@ -13,8 +13,6 @@ const key_override_t* key_overrides[] = {
 
 //Tap Dance Definitions
 tap_dance_action_t tap_dance_actions[] = {
-  //Tap once for Shift OS, twice for Caps Word
-  [SHIFT_CAPS]  = ACTION_TAP_DANCE_DOUBLE(OSM(MOD_LSFT), CW_TOGG)
 };
 
 const uint16_t PROGMEM kj_combo[] = {KC_K, KC_J, COMBO_END};
@@ -131,7 +129,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         case MAC_COLON:
-            // corrects for colon swap with karabiner
+            // sends actual semicolon which karabiner then swaps to colon
             if (record->event.pressed) {
                 if (mod_config(MOD_LGUI) == MOD_LCTL){
                     SEND_STRING(";");
@@ -141,7 +139,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         case MAC_SCOLON:
-            // corrects for colon swap with karabiner
+            // sends actual colon which karabiner then swaps to semicolon
             if (record->event.pressed) {
                 if (mod_config(MOD_LGUI) == MOD_LCTL){
                     SEND_STRING(":");
