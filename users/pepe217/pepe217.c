@@ -5,7 +5,7 @@ bool     is_clt_tab_active = false; // ADD this near the beginning of keymap.c
 uint16_t alt_tab_timer     = 0;     // we will be using them soon.
 uint16_t clt_tab_timer     = 0;     // we will be using them soon.
 
-const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, LT(MOUSE, KC_BSPC), KC_DEL);
 
 const key_override_t* key_overrides[] = {
     &delete_key_override,
@@ -15,11 +15,9 @@ const key_override_t* key_overrides[] = {
 tap_dance_action_t tap_dance_actions[] = {
 };
 
-const uint16_t PROGMEM kj_combo[] = {KC_K, KC_J, COMBO_END};
-const uint16_t PROGMEM rb_combo[] = {KC_R, KC_BSPC, COMBO_END};
+const uint16_t PROGMEM rb_combo[] = {LT(MOUSE, KC_BSPC), LT(SYMBOL, KC_R), COMBO_END};
 
 combo_t key_combos[] = {
-  [KJ_ESC] = COMBO(kj_combo, KC_ESC),
   [R_BSPC] = COMBO(rb_combo, CW_TOGG),
 };
 
