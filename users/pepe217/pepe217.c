@@ -16,9 +16,13 @@ tap_dance_action_t tap_dance_actions[] = {
 };
 
 const uint16_t PROGMEM rb_combo[] = {LT(MOUSE, KC_BSPC), LT(SYMBOL, KC_R), COMBO_END};
+const uint16_t PROGMEM spc_tab_combo[] = {LT(CURSOR, KC_SPC), LT(NUMPAD, KC_TAB), COMBO_END};
 
 combo_t key_combos[] = {
   [R_BSPC] = COMBO(rb_combo, CW_TOGG),
+  [SPC_TAB] = COMBO(spc_tab_combo, CW_TOGG),
+  [ENT_BSPC] = COMBO(spc_tab_combo, CW_TOGG),
+  [DEL_BSPC] = COMBO(spc_tab_combo, CW_TOGG),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {

@@ -46,6 +46,8 @@ enum custom_keycodes {
 };
 
 enum combos {
-  KJ_ESC,
   R_BSPC,
+  SPC_TAB,
+  ENT_BSPC,
+  DEL_BSPC,
 };
