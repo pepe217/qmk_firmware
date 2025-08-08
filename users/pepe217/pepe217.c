@@ -5,7 +5,8 @@ bool     is_clt_tab_active = false; // ADD this near the beginning of keymap.c
 uint16_t alt_tab_timer     = 0;     // we will be using them soon.
 uint16_t clt_tab_timer     = 0;     // we will be using them soon.
 
-const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, LT(MOUSE, KC_BSPC), KC_DEL);
+const key_override_t osm_delete_key_override = ko_make_basic(MOD_MASK_SHIFT, LT(MOUSE, KC_BSPC), KC_DEL);
+const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 
 const key_override_t* key_overrides[] = {
     &delete_key_override,
