@@ -72,10 +72,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [ENGRAM] = LAYOUT(
     CG_SWAP, CG_NORM,       LGUI(KC_5),    LGUI(KC_4),    LGUI(KC_3),    LGUI(KC_2),    LGUI(KC_1),    KC_PGDN,    KC_PGUP,CLT_TAB,     ALT_TAB,    LALT(KC_1),   LALT(KC_2), LALT(KC_3), LALT(KC_4),  LALT(KC_5),KC_PSCR,  KC_NO,
     TMUX_L,  KC_4,          KC_3,          KC_2,          KC_1,          KC_5,     KC_9,     KC_0,          KC_6,          KC_7,          KC_8,          TMUX_L,
-        OSM(MOD_LSFT), KC_Z,          KC_Y,          LT(CURSOR, KC_U),          KC_O,   MAC_COLON,  KC_Q,  KC_L,   LT(SYMBOL, KC_D),          KC_P,          KC_X,          OSM(MOD_RSFT),
-    KC_W,  MT(MOD_LGUI, KC_C),  MT(MOD_LALT, KC_I),  MT(MOD_LCTL, KC_E),  MT(MOD_LSFT, KC_A),  KC_COMM,  KC_K,   MT(MOD_RSFT, KC_H),  MT(MOD_RCTL, KC_T),  MT(MOD_RALT, KC_N),  MT(MOD_RGUI, KC_S),  KC_F,
-        KC_BSPC,KC_QUOT, LT(NUMPAD, KC_MINUS), LT(CURSOR,KC_EQL),KC_DOT, KC_SLSH,                          KC_J,   KC_M ,LT(SYMBOL,KC_G), LT(MOUSE, KC_B) ,KC_V, KC_ENT,
-                  KC_BSLS,KC_LBRC,KC_RBRC,KC_DOWN,                                                                     KC_UP, KC_LBRC, KC_RBRC,KC_GRV,
+        OSM(MOD_LSFT), KC_B,          KC_Y,          LT(CURSOR, KC_U),          KC_O,   MAC_COLON,  KC_Q,  KC_L,   LT(SYMBOL, KC_D),          KC_P,          KC_V,          OSM(MOD_RSFT),
+    KC_Z,  MT(MOD_LGUI, KC_C),  MT(MOD_LALT, KC_I),  MT(MOD_LCTL, KC_E),  MT(MOD_LSFT, KC_A),  KC_COMM,  KC_K,   MT(MOD_RSFT, KC_H),  MT(MOD_RCTL, KC_T),  MT(MOD_RALT, KC_N),  MT(MOD_RGUI, KC_S),  KC_X,
+        KC_BSPC,KC_QUOT, LT(NUMPAD, KC_MINUS), LT(CURSOR,KC_EQL),KC_DOT, KC_SLSH,                          KC_J,   KC_M ,LT(SYMBOL,KC_G), LT(MOUSE, KC_P) ,KC_F, KC_ENT,
+                  KC_PGDN,KC_LBRC,KC_RBRC,KC_DOWN,                                                                     KC_UP, KC_LBRC, KC_RBRC, KC_PGUP,
                                                       LT(FUNCTION, KC_ESC),  KC_INS,                                             KC_HOME,  LT(SYSTEM, KC_ENT),
                                                                 KC_RPRN,                                               KC_END,
                              LT(CURSOR, KC_SPC),  LT(NUMPAD, KC_TAB),   KC_LPRN,                                               KC_DEL, LT(MOUSE, KC_BSPC), LT(SYMBOL, KC_R)
@@ -94,10 +94,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [SYMBOL] = LAYOUT(
     KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,         KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_PSCR,  KC_SCRL,  KC_PAUS,  AC_TOGG,    QK_BOOT,
     KC_NO,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,            KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
-    KC_NO, KC_EXLM, KC_LCBR, KC_RCBR, KC_HASH, KC_NO,                   KC_TILDE, OSM(MOD_RSFT), OSM(MOD_RCTL), OSM(MOD_RALT), OSM(MOD_RGUI), KC_NO,
+    KC_NO, KC_EXLM, KC_LCBR, KC_RCBR, KC_HASH, KC_GRV,                   KC_TILDE, OSM(MOD_RSFT), OSM(MOD_RCTL), OSM(MOD_RALT), OSM(MOD_RGUI), KC_NO,
     KC_NO, KC_CIRC, KC_LPRN, KC_RPRN, KC_DLR, KC_TILDE,              KC_DOT, KC_BSPC, KC_TAB, KC_SPACE, KC_ENTER, KC_NO,
-    QK_LLCK, KC_LT, KC_QUES, KC_ASTR, KC_GT, KC_AT,                         KC_BSLS, KC_DEL, LSFT(KC_TAB), KC_INS, KC_ESC, QK_LLCK,
-              KC_NO,   KC_BSLS,   KC_DQT,  KC_AMPR,                                       KC_TRNS,    KC_TRNS,  KC_TRNS,  VIM_SAVE,
+    QK_LLCK, KC_LT, KC_QUES, KC_PAST, KC_GT, KC_AT,                         KC_BSLS, KC_DEL, LSFT(KC_TAB), KC_INS, KC_ESC, QK_LLCK,
+              KC_NO,   KC_NO,   KC_PIPE,  KC_AMPR,                                       KC_TRNS,    KC_TRNS,  KC_TRNS,  VIM_SAVE,
                                                       KC_BSLS,  KC_DOT,                                               KC_NO,  VIM_SAVE,
                                                                 KC_TRNS,                                               KC_TRNS,
                                                 KC_PERC,  MAC_SCOLON,   KC_AT,                                                TG(SYMBOL),  KC_ENTER, VIM_SAVE
