@@ -97,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO, KC_EXLM, KC_LCBR, KC_RCBR, KC_HASH, KC_GRV,                   KC_TILDE, OSM(MOD_RSFT), OSM(MOD_RCTL), OSM(MOD_RALT), OSM(MOD_RGUI), KC_NO,
     KC_NO, KC_CIRC, KC_LPRN, KC_RPRN, KC_DLR, KC_TILDE,              KC_DOT, KC_BSPC, KC_TAB, KC_SPACE, KC_ENTER, KC_NO,
     QK_LLCK, KC_LT, KC_QUES, KC_PAST, KC_GT, KC_AT,                         KC_BSLS, KC_DEL, LSFT(KC_TAB), KC_INS, KC_ESC, QK_LLCK,
-              KC_NO,   KC_NO,   KC_PIPE,  KC_AMPR,                                       KC_TRNS,    KC_TRNS,  KC_TRNS,  VIM_SAVE,
+              KC_NO,   KC_BSLS,   KC_PIPE,  KC_AMPR,                                       KC_TRNS,    KC_TRNS,  KC_TRNS,  VIM_SAVE,
                                                       KC_BSLS,  KC_DOT,                                               KC_NO,  VIM_SAVE,
                                                                 KC_TRNS,                                               KC_TRNS,
                                                 KC_PERC,  MAC_SCOLON,   KC_AT,                                                TG(SYMBOL),  KC_ENTER, VIM_SAVE
