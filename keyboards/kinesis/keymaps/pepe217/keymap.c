@@ -70,11 +70,11 @@ bool select_word_host_is_mac(void) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [ENGRAM] = LAYOUT(
-    CG_SWAP, CG_NORM,       LGUI(KC_5),    LGUI(KC_4),    LGUI(KC_3),    LGUI(KC_2),    LGUI(KC_1),    KC_PGDN,    KC_PGUP,CLT_TAB,     ALT_TAB,    LALT(KC_1),   LALT(KC_2), LALT(KC_3), LALT(KC_4),  LALT(KC_5),KC_PSCR,  KC_NO,
+    CG_SWAP, CG_NORM,       LGUI(KC_5),    LGUI(KC_4),    LGUI(KC_3),    LGUI(KC_2),    LGUI(KC_1),    ALT_TAB,    CLT_TAB, CLT_TAB,     ALT_TAB,    LALT(KC_1),   LALT(KC_2), LALT(KC_3), LALT(KC_4),  LALT(KC_5),KC_PSCR,  KC_NO,
     TMUX_L,  KC_4,          KC_3,          KC_2,          KC_1,          KC_5,     KC_9,     KC_0,          KC_6,          KC_7,          KC_8,          TMUX_L,
-    OSM(MOD_LSFT), KC_Z,          KC_Y,          LT(CURSOR, KC_O),          KC_U,   KC_EQL,  KC_Q,  KC_L,   LT(SYMBOL, KC_D),          KC_P,          KC_X,          OSM(MOD_RSFT),
-    KC_BSPC,  MT(MOD_LGUI, KC_C),  MT(MOD_LALT, KC_I),  MT(MOD_LCTL, KC_A),  MT(MOD_LSFT, KC_E),  MAC_COLON,  KC_K,   MT(MOD_RSFT, KC_H),  MT(MOD_RCTL, KC_T),  MT(MOD_RALT, KC_N),  MT(MOD_RGUI, KC_S),  KC_ENT,
-    KC_W,KC_QUOT, LT(NUMPAD, KC_MINUS), LT(CURSOR,KC_COMM),KC_DOT, KC_SLSH,                          KC_J,   KC_M ,LT(SYMBOL,KC_G), LT(MOUSE, KC_P) ,KC_V, KC_F,
+    OSM(MOD_LSFT), KC_Q,          KC_Y,          KC_O,          KC_U,   KC_EQL,  KC_X,  KC_L,   KC_D,          KC_W,          KC_Z,          OSM(MOD_RSFT),
+    KC_BSPC,  MT(MOD_LGUI, KC_C),  MT(MOD_LALT, KC_I),  MT(MOD_LCTL, KC_A),  MT(MOD_LSFT, KC_E),  KC_MINUS,  KC_K,   MT(MOD_RSFT, KC_H),  MT(MOD_RCTL, KC_T),  MT(MOD_RALT, KC_N),  MT(MOD_RGUI, KC_S),  KC_ENT,
+    KC_B,KC_QUOT, LT(NUMPAD, KC_COMM), LT(CURSOR,KC_DOT), KC_COLN, KC_SLSH,                          KC_J,   KC_M ,LT(SYMBOL,KC_G), LT(MOUSE, KC_P) ,KC_V, KC_F,
                   KC_PGDN,KC_LBRC,KC_RBRC,KC_DOWN,                                                                     KC_UP, KC_LBRC, KC_RBRC, KC_PGUP,
                                                     LT(FUNCTION, KC_ESC),  KC_INS,                                             KC_HOME,  LT(SYSTEM, KC_ENT),
                                                                 KC_RPRN,                                               KC_END,
@@ -100,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_NO,   KC_BSLS,   KC_PIPE,  KC_AMPR,                                       KC_TRNS,    KC_TRNS,  KC_TRNS,  VIM_SAVE,
                                                       KC_BSLS,  KC_DOT,                                               KC_NO,  VIM_SAVE,
                                                                 KC_TRNS,                                               KC_TRNS,
-                                                KC_PERC,  MAC_SCOLON,   KC_AT,                                                TG(SYMBOL),  KC_ENTER, VIM_SAVE
+                                                KC_PERC,  KC_SCLN,   KC_AT,                                                TG(SYMBOL),  KC_ENTER, VIM_SAVE
   ),
   [FUNCTION] = LAYOUT(
     KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,         KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_NO,  KC_NO,  DB_TOGG,    KC_NO,

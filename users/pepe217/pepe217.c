@@ -7,9 +7,12 @@ uint16_t clt_tab_timer     = 0;     // we will be using them soon.
 
 const key_override_t osm_delete_key_override = ko_make_basic(MOD_MASK_SHIFT, LT(MOUSE, KC_BSPC), KC_DEL);
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+const key_override_t colon_key_swap = ko_make_basic(MOD_MASK_SHIFT, KC_COLON, KC_SCLN);
 
 const key_override_t* key_overrides[] = {
     &delete_key_override,
+    &osm_delete_key_override,
+    &colon_key_swap
 };
 
 //Tap Dance Definitions
