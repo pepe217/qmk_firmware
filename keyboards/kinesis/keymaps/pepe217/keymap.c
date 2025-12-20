@@ -70,7 +70,7 @@ bool select_word_host_is_mac(void) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [ENGRAM] = LAYOUT(
-    CG_SWAP, CG_NORM,       LGUI(KC_5),    LGUI(KC_4),    LGUI(KC_3),    LGUI(KC_2),    LGUI(KC_1),    ALT_TAB,    CLT_TAB, CLT_TAB,     ALT_TAB,    LALT(KC_1),   LALT(KC_2), LALT(KC_3), LALT(KC_4),  LALT(KC_5),KC_PSCR,  KC_NO,
+    CG_SWAP, CG_NORM,       LGUI(KC_5),    LGUI(KC_4),    LGUI(KC_3),    LGUI(KC_2),    LGUI(KC_1),    ALT_TAB,    CLT_TAB, CLT_TAB,     ALT_TAB,    LCTL(KC_1),   LCTL(KC_2), LCTL(KC_3), LCTL(KC_4),  LCTL(KC_5),KC_PSCR,  KC_NO,
     TMUX_L,  KC_4,          KC_3,          KC_2,          KC_1,          KC_5,     KC_9,     KC_0,          KC_6,          KC_7,          KC_8,          TMUX_L,
     OSM(MOD_LSFT), KC_Q,          KC_Y,          KC_O,          KC_U,   KC_EQL,  KC_X,  KC_L,   KC_D,          KC_W,          KC_Z,          OSM(MOD_RSFT),
     KC_BSPC,  MT(MOD_LGUI, KC_C),  MT(MOD_LALT, KC_I),  MT(MOD_LCTL, KC_A),  MT(MOD_LSFT, KC_E),  KC_MINUS,  KC_K,   MT(MOD_RSFT, KC_H),  MT(MOD_RCTL, KC_T),  MT(MOD_RALT, KC_N),  MT(MOD_RGUI, KC_S),  KC_ENT,
@@ -96,8 +96,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,            KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
     KC_NO, KC_EXLM, KC_LCBR, KC_RCBR, KC_HASH, KC_GRV,                   KC_TILDE, OSM(MOD_RSFT), OSM(MOD_RCTL), OSM(MOD_RALT), OSM(MOD_RGUI), KC_NO,
     KC_NO, KC_CIRC, KC_LPRN, KC_RPRN, KC_DLR, KC_TILDE,              KC_DOT, KC_BSPC, KC_TAB, KC_SPACE, KC_ENTER, KC_NO,
-    QK_LLCK, KC_LT, KC_QUES, KC_PAST, KC_GT, KC_AT,                         KC_BSLS, KC_DEL, LSFT(KC_TAB), KC_INS, KC_ESC, QK_LLCK,
-              KC_NO,   KC_BSLS,   KC_PIPE,  KC_AMPR,                                       KC_TRNS,    KC_TRNS,  KC_TRNS,  VIM_SAVE,
+    QK_LLCK, KC_AMPR   ,KC_LBRC, KC_RBRC, KC_PAST, KC_AT,                         KC_BSLS, KC_DEL, LSFT(KC_TAB), KC_INS, KC_ESC, QK_LLCK,
+              KC_NO,   KC_NO,   KC_BSLS,   KC_PIPE,                                         KC_TRNS,    KC_TRNS,  KC_TRNS,  VIM_SAVE,
                                                       KC_BSLS,  KC_DOT,                                               KC_NO,  VIM_SAVE,
                                                                 KC_TRNS,                                               KC_TRNS,
                                                 KC_PERC,  KC_SCLN,   KC_AT,                                                TG(SYMBOL),  KC_ENTER, VIM_SAVE
