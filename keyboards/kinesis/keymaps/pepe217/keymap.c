@@ -72,9 +72,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [ENGRAM] = LAYOUT(
     CG_SWAP, CG_NORM,       LGUI(KC_5),    LGUI(KC_4),    LGUI(KC_3),    LGUI(KC_2),    LGUI(KC_1),    ALT_TAB,    CLT_TAB, CLT_TAB,     ALT_TAB,    LCTL(KC_1),   LCTL(KC_2), LCTL(KC_3), LCTL(KC_4),  LCTL(KC_5),KC_PSCR,  KC_NO,
     TMUX_L,  KC_4,          KC_3,          KC_2,          KC_1,          KC_5,     KC_9,     KC_0,          KC_6,          KC_7,          KC_8,          TMUX_L,
-    OSM(MOD_LSFT), KC_Q,          KC_Y,          KC_O,          KC_U,   KC_EQL,  KC_X,  KC_L,   KC_D,          KC_W,          KC_Z,          OSM(MOD_RSFT),
+    OSM(MOD_LSFT), KC_Q,          KC_Y,          KC_O,          KC_U,   KC_EQL,  KC_X,  KC_L,   KC_D,          KC_P,          KC_Z,          OSM(MOD_RSFT),
     KC_BSPC,  MT(MOD_LGUI, KC_C),  MT(MOD_LALT, KC_I),  MT(MOD_LCTL, KC_A),  MT(MOD_LSFT, KC_E),  KC_MINUS,  KC_K,   MT(MOD_RSFT, KC_H),  MT(MOD_RCTL, KC_T),  MT(MOD_RALT, KC_N),  MT(MOD_RGUI, KC_S),  KC_ENT,
-    KC_B,KC_QUOT, LT(NUMPAD, KC_COMM), LT(CURSOR,KC_DOT), KC_COLN, KC_SLSH,                          KC_J,   KC_M ,LT(SYMBOL,KC_G), LT(MOUSE, KC_P) ,KC_V, KC_F,
+    KC_B,KC_QUOT, LT(NUMPAD, KC_COMM), LT(CURSOR,KC_DOT), KC_SLSH, KC_COLN,                          KC_J,   KC_M ,LT(SYMBOL,KC_G), LT(MOUSE, KC_F) ,KC_V, KC_W,
                   KC_PGDN,KC_LBRC,KC_RBRC,KC_DOWN,                                                                     KC_UP, KC_LBRC, KC_RBRC, KC_PGUP,
                                                     LT(FUNCTION, KC_ESC),  KC_INS,                                             KC_HOME,  LT(SYSTEM, KC_ENT),
                                                                 KC_RPRN,                                               KC_END,
